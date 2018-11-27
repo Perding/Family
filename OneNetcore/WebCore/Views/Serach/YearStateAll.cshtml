@@ -1,0 +1,465 @@
+﻿
+@{
+    Layout = null;
+    IList<Entity.AStudentPay> all = ViewBag.year as IList<Entity.AStudentPay>;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>YearStateAll</title>
+    <link href="~/Jscript/layui/css/layui.css" rel="stylesheet" />
+
+    <link href="~/Css/framework-font.css" rel="stylesheet" />
+    <link href="~/Jscript/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Jscript/jquery-1.10.2.min.js"></script>
+    <script src="~/Jscript/echarts.min.js"></script>
+    <script src="~/Jscript/layui/layui.js"></script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 10px !important;
+            height: 10px !important;
+            -webkit-appearance: none;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            height: 5px;
+            border: 1px solid transparent;
+            border-top: none;
+            border-bottom: none;
+            -webkit-border-radius: 6px;
+            background-color: rgba(0,0,0,.3);
+            background-clip: padding-box;
+        }
+
+        .terques {
+            background: #6ccac9;
+        }
+
+        .symbol {
+            width: 40%;
+            padding: 25px 15px;
+            -webkit-border-radius: 4px 0px 0px 4px;
+            border-radius: 4px 0px 0px 4px;
+        }
+
+        .symbol, .state-overview .value {
+            display: inline-block;
+            text-align: center;
+        }
+
+        .value {
+            width: 58%;
+            padding-top: 21px;
+        }
+
+        .value {
+            float: right;
+        }
+
+        .symbol, .state-overview .value {
+            display: inline-block;
+            text-align: center;
+        }
+
+        .value h1 {
+            font-weight: 300;
+        }
+
+        .value h1, .state-overview .value p {
+            margin: 0;
+            padding: 0;
+            color: #c6cad6;
+        }
+
+        .value h1, .state-overview .value p {
+            margin: 0;
+            padding: 0;
+            color: #c6cad6;
+        }
+
+        .red {
+            background: #ff6c60;
+        }
+
+        .yellow {
+            background: #f8d347;
+        }
+
+        .blue {
+            background: #57c8f2;
+        }
+
+        .symbol i {
+            color: #fff;
+            font-size: 50px;
+        }
+
+        .foots {
+            height: 220px;
+        }
+    </style>
+</head>
+<body style=" overflow-x:hidden;overflow-y:hidden">
+    <form class="layui-form">
+		<section class="container" style="width:100%;height:100%;background-color:#ddd;overflow-x:hidden;overflow-y:auto">
+			<div class="row" style="height:50px;">
+
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+				<span style="float:right;line-height:2;font-size:20px;">年度选择：</span>
+				</div>
+				<div class="col-md-6 ">
+					<div class="layui-input-block" style="width:50%; margin-left:0px;">
+						<select name="Year" id="Year" lay-filter="trone" class="formValue" lay-search>
+							<option value=""></option>
+							@if (all != null)
+							{
+								foreach (var item in all)
+								{
+									<option value="@item.years">@item.years</option>
+								}
+							}
+						</select>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<section class="panel">
+						<div class="symbol terques">
+							<i class="fa fa-flag fa-3x pull-left"></i>
+						</div>
+						<div class="value">
+							<h1 class="count year"></h1>
+							<p>新生数</p>
+						</div>
+					</section>
+				</div>
+
+
+
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="panel panel-default">
+						<div class="panel-body foots">
+							<div id="main1" style="width: 100%;height:220px"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="panel panel-default">
+						<div class="panel-body foots">
+							<div id="main2" style="width: 100%;height:220px"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="panel panel-default">
+						<div class="panel-body foots">
+							<div id="main3" style="width: 100%;height:220px"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div id="main4" style="width: 100%;height:500px"></div>
+				</div>
+			</div>
+		</section>
+    </form>
+</body>
+</html>
+<script>
+    $(function () {
+        $(".container").height($(window).height());
+        layui.use(['form', 'layer'], function () {
+            var form = layui.form, layer = layui.layer;
+            form.on('select(trone)', function (data) {
+                Get(data.value);
+                form.render('select');
+            });
+            Get("");
+        })
+    })
+    var index = 0
+    var xlab = [], xdata = []
+    var ylab = [], ydata = []
+    var zlab = [], zdata = []
+    var alab = [], adata1 = [], adata2 = [], adata3 = [];
+    function Get(year) {
+        xlab.splice(0, xlab.length)
+        xdata.splice(0, xdata.length)
+        ylab.splice(0, ylab.length)
+        ydata.splice(0, ydata.length)
+        zlab.splice(0, zlab.length)
+        zdata.splice(0, zdata.length)
+
+        alab.splice(0, alab.length)
+        adata1.splice(0, adata1.length)
+        adata2.splice(0, adata2.length)
+        adata3.splice(0, adata3.length)
+        //$("#main1").html('');
+        //$("#main2").html('');
+        //$("#main3").html('');
+        //$("#main4").html('');
+        var myChart1 = echarts.init(document.getElementById('main1'));
+        var myChart2 = echarts.init(document.getElementById('main2'));
+        var myChart3 = echarts.init(document.getElementById('main3'));
+        var myChart4 = echarts.init(document.getElementById('main4'));
+        
+        $.ajax({
+            url: '/Serach/GetYear',
+            data: { year: year },
+            type: "post",
+            dataType: "json",
+            beforeSend: function () {
+                index = ityzl_SHOW_LOAD_LAYER();
+            },
+            success: function (msg) {
+                layer.close(index);
+
+                if (msg.list1.length > 0) {
+                    for (var i = 0; i < msg.list1.length; i++) {
+                        if (msg.list1[i].name == "year") {
+                            $(".year").html(msg.list1[i].con)
+                        }
+                      
+                        if (msg.list1[i].tp == "1") {
+                            var person = { value: msg.list1[i].con, name: msg.list1[i].name };
+                            xlab.push(msg.list1[i].name);
+                            xdata.push(person)
+                        }
+                        if (msg.list1[i].tp == "2") {
+                            ylab.push(msg.list1[i].name);
+                            var person = { value: msg.list1[i].con, name: msg.list1[i].name };
+                            ydata.push(person)
+                        }
+                        if (msg.list1[i].tp == "3") {
+                            zlab.push(msg.list1[i].name);
+                            var person = { value: msg.list1[i].con, name: msg.list1[i].name };
+                            zdata.push(person)
+                        }
+                    }
+                  
+                    var option1 = {
+                        title: {
+                            text: '学费人员分布图',
+                            x: 'center'
+                        },
+                        tooltip: {
+                            trigger: 'item',
+                            formatter: "{a} <br/>{b}: {c} ({d}%)"
+                        },
+                        legend: {
+                            orient: 'vertical',
+                            x: 'left',
+                            data: xlab
+                        },
+                        series: [
+                            {
+                                name: '访问来源',
+                                type: 'pie',
+                                radius: ['50%', '70%'],
+                                avoidLabelOverlap: false,
+                                label: {
+                                    normal: {
+                                        show: false,
+                                        position: 'center'
+                                    },
+                                    emphasis: {
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: '30',
+                                            fontWeight: 'bold'
+                                        }
+                                    }
+                                },
+                                labelLine: {
+                                    normal: {
+                                        show: true
+                                    }
+                                },
+                                data: xdata
+                            }
+                        ]
+                    };
+                    var option2 = {
+                        title: {
+                            text: '住宿费人员分布图',
+                            x: 'center'
+                        },
+                        tooltip: {
+                            trigger: 'item',
+                            formatter: "{a} <br/>{b}: {c} ({d}%)"
+                        },
+                        legend: {
+                            orient: 'vertical',
+                            x: 'left',
+                            data: ylab
+                        },
+                        series: [
+                            {
+                                name: '访问来源',
+                                type: 'pie',
+                                radius: ['50%', '70%'],
+                                avoidLabelOverlap: false,
+                                label: {
+                                    normal: {
+                                        show: false,
+                                        position: 'center'
+                                    },
+                                    emphasis: {
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: '30',
+                                            fontWeight: 'bold'
+                                        }
+                                    }
+                                },
+                                labelLine: {
+                                    normal: {
+                                        show: false
+                                    }
+                                },
+                                data: ydata
+                            }
+                        ]
+                    };
+                    var option3 = {
+                        title: {
+                            text: '文化课人员分布图',
+                            x: 'center'
+                        },
+                        tooltip: {
+                            trigger: 'item',
+                            formatter: "{a} <br/>{b}: {c} ({d}%)"
+                        },
+                        legend: {
+                            orient: 'vertical',
+                            x: 'left',
+                            data: zlab
+                        },
+                        series: [
+                            {
+                                name: '访问来源',
+                                type: 'pie',
+                                radius: ['50%', '70%'],
+                                avoidLabelOverlap: false,
+                                label: {
+                                    normal: {
+                                        show: false,
+                                        position: 'center'
+                                    },
+                                    emphasis: {
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: '30',
+                                            fontWeight: 'bold'
+                                        }
+                                    }
+                                },
+                                labelLine: {
+                                    normal: {
+                                        show: false
+                                    }
+                                },
+                                data: zdata
+                            }
+                        ]
+                    };
+                    myChart1.setOption(option1);
+                    myChart2.setOption(option2);
+                    myChart3.setOption(option3);
+                }
+                if (msg.list2.length > 0) {
+                    for (var i = 0; i < msg.list2.length; i++) {
+                        alab.push(msg.list2[i].months);
+                        adata1.push(msg.list2[i].sr);
+                        adata2.push(msg.list2[i].zc);
+                        adata3.push(msg.list2[i].qf);
+                    }
+                    var posList = [
+                        'left', 'right', 'top', 'bottom',
+                        'inside',
+                        'insideTop', 'insideLeft', 'insideRight', 'insideBottom',
+                        'insideTopLeft', 'insideTopRight', 'insideBottomLeft', 'insideBottomRight'
+                    ];
+
+
+
+                    var option5 = {
+                        color: ['#003366', '#006699', '#4cabce', '#e5323e'],
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'shadow'
+                            }
+                        },
+                        legend: {
+                            data: ['收入', '支出', '欠费']
+                        },
+                        toolbox: {
+                            show: true,
+                            orient: 'vertical',
+                            left: 'right',
+                            top: 'center',
+                            feature: {
+                                mark: { show: true },
+                                dataView: { show: true, readOnly: false },
+                                magicType: { show: true, type: ['line', 'bar', 'stack', 'tiled'] },
+                                restore: { show: true },
+                                saveAsImage: { show: true }
+                            }
+                        },
+                        calculable: true,
+                        xAxis: [
+                            {
+                                type: 'category',
+                                axisTick: { show: false },
+                                data: alab
+                            }
+                        ],
+                        yAxis: [
+                            {
+                                type: 'value'
+                            }
+                        ],
+                        series: [
+                            {
+                                name: '收入',
+                                type: 'bar',
+                                barGap: 0,
+
+                                data: adata1
+                            },
+                            {
+                                name: '支出',
+                                type: 'bar',
+
+                                data: adata2
+                            },
+                            {
+                                name: '欠费',
+                                type: 'bar',
+
+                                data: adata3
+                            }
+                        ]
+                    };
+                    myChart4.setOption(option5);
+                }
+            },
+            error: function () {
+                layer.msg("保存失败");
+            }
+        })
+
+    }
+    function ityzl_SHOW_LOAD_LAYER() {
+        return layer.msg('正在加制中...', { icon: 16, shade: [0.5, '#f5f5f5'], scrollbar: false, time: 0 });
+    }
+</script>

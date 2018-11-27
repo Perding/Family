@@ -1,0 +1,49 @@
+
+ 
+记录时间：2018-11-12 09:52:50,104 
+线程ID:[21] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-12 10:13:52,294 
+线程ID:[11] 
+日志级别：  ERROR 
+错误描述：OnExceptionUnable to resolve service for type 'Service.IStudentService' while attempting to activate 'WebCore.Controllers.HomeController'.
+ 
+
+ 
+记录时间：2018-11-12 10:18:47,787 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：OnExceptionUnable to resolve service for type 'Service.IStudentService' while attempting to activate 'WebCore.Controllers.HomeController'.
+ 
+
+ 
+记录时间：2018-11-12 10:19:26,753 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：OnExceptionUnable to resolve service for type 'Service.IStudentService' while attempting to activate 'WebCore.Controllers.HomeController'.
+ 
+
+ 
+记录时间：2018-11-12 10:21:57,012 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：OnExceptionUnable to resolve service for type 'Service.IStudentService' while attempting to activate 'WebCore.Controllers.HomeController'.
+ 
+
+ 
+记录时间：2018-11-12 10:25:56,150 
+线程ID:[18] 
+日志级别：  ERROR 
+错误描述：OnExceptionUnable to resolve service for type 'Service.IStudentService' while attempting to activate 'WebCore.Controllers.HomeController'.
+ 
+
+ 
+记录时间：2018-11-12 10:30:10,398 
+线程ID:[14] 
+日志级别：  ERROR 
+错误描述：OnExceptionUnable to resolve service for type 'Service.IStudentService' while attempting to activate 'WebCore.Controllers.HomeController'.
+ 

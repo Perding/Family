@@ -1,0 +1,103 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>UpdatePass</title>
+	<link href="~/Jscript/layui/css/layui.css" rel="stylesheet" />
+	<script src="~/Jscript/jquery-1.10.2.min.js"></script>
+	<script src="~/Jscript/layui/layui.js"></script>
+	<script src="~/Jscript/jquery.form.js"></script>
+
+	<style>
+		table tr {
+			height: 45px;
+		}
+
+		.form-button {
+			padding: 0px;
+			height: 40px;
+			line-height: 36px;
+			text-align: right;
+			border-top: 1px solid #ddd;
+			background-color: #eee;
+			position: absolute;
+			top: 100%;
+			margin-top: -40px;
+			width: 100%;
+			padding-right: 6px;
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+			-khtml-user-select: none;
+			user-select: none;
+		}
+	</style>
+</head>
+<body style="overflow:hidden">
+	@using (Html.BeginForm("UpdatePass", "System", FormMethod.Post, new { id = "form1", name = "form1", @class = "layui-form" }))
+	{
+		@Html.AntiForgeryToken()
+		<table style="width:100%;" class="form">
+			<tr>
+				<td align="right" width="10%">初始密码：</td>
+				<td align="left" width="80%" class="formValue">
+					<input type="password" name="u_password" placeholder="初始密码" id="u_password" class="layui-input form-control required" lay-verify="required" value="" style="width:90%;" />
+					
+				</td>
+			</tr>
+			<tr>
+				<td align="right" width="10%">新密码：</td>
+				<td align="left" width="80%" class="formValue">
+					<input type="password" name="newpassword" id="newpassword"  placeholder="新密码" class="layui-input form-control required" lay-verify="required" value="" style="width:90%;" />
+				</td>
+			</tr>
+			<tr>
+				<td align="right" width="10%">确认密码：</td>
+				<td align="left" width="80%" class="formValue">
+					<input type="password" name="setnewpassword" id="setnewpassword" placeholder="新密码" class="layui-input form-control required" lay-verify="required" value="" style="width:90%;" />
+				</td>
+			</tr>
+			
+		</table>
+		<div class="form-button" id="wizard-actions" style=" text-align:center">
+			<input type="submit" value="确 定" class="layui-btn layui-btn-normal  layui-btn-lg cli" lay-submit="" lay-filter="demo1" />
+		</div>
+	}
+
+
+</body>
+</html>
+<script>
+	var index = parent.layer.getFrameIndex(window.name);
+	$(function () { 
+		layui.use(['form', 'layer', 'util', 'laydate'], function () {
+			var form = layui.form, layer = layui.layer, util = layui.util, laydate = layui.laydate;
+			form.on('submit(demo1)', function (data) {
+				$(".cli").attr('disabled', 'disabled').val("保存中...");
+
+				$("#form1").ajaxSubmit(function (msg) {
+					if (msg.status == "ok") {
+						layer.msg("保存成功", { time: 1000 }, function () {
+							window.parent.location.reload();
+							parent.layer.close(index);
+						});
+					}
+					else {
+						$(".cli").removeAttr('disabled').val("确定");
+
+						layer.msg(msg.message)
+					}
+				});
+				return false;
+			});
+		})
+		
+	})
+	
+</script>

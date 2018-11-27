@@ -1,0 +1,105 @@
+
+ 
+记录时间：2018-11-22 00:12:05,864 
+线程ID:[17] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-22 00:13:45,283 
+线程ID:[15] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-22 00:17:27,388 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-22 00:20:09,907 
+线程ID:[11] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-22 00:21:48,262 
+线程ID:[11] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-22 00:23:35,436 
+线程ID:[11] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-22 00:27:26,820 
+线程ID:[16] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-22 00:50:52,590 
+线程ID:[16] 
+日志级别：  ERROR 
+错误描述：OnExceptionsheetName '' is invalid - character count MUST be greater than or equal to 1 and less than or equal to 31
+ 
+
+ 
+记录时间：2018-11-22 21:09:46,472 
+线程ID:[17] 
+日志级别：  ERROR 
+错误描述：OnExceptionInput string was not in a correct format.
+ 
+
+ 
+记录时间：2018-11-22 22:07:14,920 
+线程ID:[34] 
+日志级别：  ERROR 
+错误描述：OnExceptionMapper already initialized. You must call Initialize once per application domain/process.
+ 
+
+ 
+记录时间：2018-11-22 22:07:42,344 
+线程ID:[32] 
+日志级别：  ERROR 
+错误描述：OnExceptionMapper already initialized. You must call Initialize once per application domain/process.
+ 
+
+ 
+记录时间：2018-11-22 22:12:58,885 
+线程ID:[21] 
+日志级别：  ERROR 
+错误描述：OnExceptionMapper already initialized. You must call Initialize once per application domain/process.
+ 
+
+ 
+记录时间：2018-11-22 23:25:57,763 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-22 23:31:25,976 
+线程ID:[11] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-22 23:33:35,629 
+线程ID:[12] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 

@@ -1,0 +1,94 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Loginfo</title>
+	<link href="~/Jscript/layui/css/layui.css" rel="stylesheet" />
+	<link href="~/Jscript/ztree/css/zTreeStyle.css" rel="stylesheet" />
+	<script src="~/Jscript/jquery-1.10.2.min.js"></script>
+	<script src="~/Jscript/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+	<script src="~/Jscript/layui/layui.js"></script>
+</head>
+<body style="overflow:hidden">
+	<form class="layui-form">
+		<table style="width:100%;">
+			<tr>
+				<td align="right" style="width:10%;"> 时间段：</td>
+				<td style="width:20%;">  <input type="text" class="layui-input" id="dates" placeholder=" ~ " style="width:100%;"></td>
+				<td align="left"><input type="button" class="layui-btn layui-btn-sm add" data-type="reloadselect" id="btn_serch" value="查询" lay-event="getCheckData" /></td>
+			</tr>
+
+		</table>
+
+		<table id="demo" lay-filter="demo" style="width:100%; "></table>
+	</form>
+</body>
+</html>
+<script>
+	$(function () { 
+		$(".body").height($(window).height())
+		layui.use('laydate', function () {
+			var laydate = layui.laydate;
+			laydate.render({
+				elem: '#dates', range: '~', format: 'yyyy-MM-dd'
+			});
+		})
+		layui.use(['laypage', 'form', 'layer', 'table'], function () {
+			var laypage = layui.laypage, form = layui.form, layer = layui.layer, table = layui.table;
+			table.render({
+				elem: "#demo",
+				id: "tabReload",
+				url: "/System/GetLogInfoList",
+				method: "post",
+				page: true,
+				width: window.innerWidth,
+				height: 'full-300',
+				loading: true,
+			   limit: 20,
+				text: {
+					none: '暂无相关数据'
+				},
+				cols: [[
+					{ type: 'numbers' }
+					, { field: 'u_account', align: 'center', width: 150, title: '操作用户' }
+					, { field: 'l_ip', align: 'center', width: 150, title: '用户IP' }
+					, { field: 'l_dates', align: 'center', width: 200, title: '操作时间' }
+					, { field: 'l_content', align: 'center', title: '操作内容' }
+				]]
+			})
+			var active = {
+				reloadselect: function () {
+					var start = $("#dates").val().substring(0, $("#dates").val().indexOf("~"));
+					var end = $("#dates").val().substring($("#dates").val().indexOf("~") + 1, $("#dates").val().length);
+					var contractcode = $('#name');
+					//执行重载
+					table.reload('tabReload', {
+						page: {
+							curr: 1 //重新从第 1 页开始
+						}
+						, where: {
+							start: start,
+							end: end
+						}
+					});
+				}
+			};
+			///查询
+			$('#btn_serch ').on('click', function () {
+				var type = $(this).data('type');
+				active[type] ? active[type].call(this) : '';
+				var start = $("#dates").val().substring(0, $("#dates").val().indexOf("~"));
+				var end = $("#dates").val().substring($("#dates").val().indexOf("~") + 1, $("#dates").val().length);
+				
+			});
+		})
+		
+		
+	})
+</script>

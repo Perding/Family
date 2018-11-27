@@ -1,0 +1,171 @@
+
+ 
+记录时间：2018-11-18 00:00:03,614 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：IstrueBeginExecuteNonQuery: CommandText property has not been initialized
+ 
+
+ 
+记录时间：2018-11-18 00:02:51,314 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：IstrueSqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM.
+ 
+
+ 
+记录时间：2018-11-18 00:03:30,976 
+线程ID:[21] 
+日志级别：  ERROR 
+错误描述：IstrueSqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM.
+ 
+
+ 
+记录时间：2018-11-18 00:07:03,632 
+线程ID:[11] 
+日志级别：  ERROR 
+错误描述：IstrueSqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM.
+ 
+
+ 
+记录时间：2018-11-18 00:19:36,997 
+线程ID:[33] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-18 00:20:32,939 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-18 00:21:42,067 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-18 00:21:56,025 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-18 00:28:03,454 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-18 00:28:12,619 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-18 00:28:38,659 
+线程ID:[15] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-18 00:28:51,189 
+线程ID:[15] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-18 00:29:15,798 
+线程ID:[25] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-18 00:57:08,876 
+线程ID:[22] 
+日志级别：  ERROR 
+错误描述：IstrueIndex was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+ 
+
+ 
+记录时间：2018-11-18 00:57:09,015 
+线程ID:[22] 
+日志级别：  ERROR 
+错误描述：OnExceptionIndex was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+ 
+
+ 
+记录时间：2018-11-18 00:59:50,742 
+线程ID:[25] 
+日志级别：  ERROR 
+错误描述：IstrueIndex was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+ 
+
+ 
+记录时间：2018-11-18 00:59:50,758 
+线程ID:[25] 
+日志级别：  ERROR 
+错误描述：OnExceptionIndex was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+ 
+
+ 
+记录时间：2018-11-18 00:59:54,142 
+线程ID:[25] 
+日志级别：  ERROR 
+错误描述：IstrueIndex was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+ 
+
+ 
+记录时间：2018-11-18 00:59:54,143 
+线程ID:[25] 
+日志级别：  ERROR 
+错误描述：OnExceptionIndex was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+ 
+
+ 
+记录时间：2018-11-18 01:00:23,392 
+线程ID:[25] 
+日志级别：  ERROR 
+错误描述：IstrueIndex was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+ 
+
+ 
+记录时间：2018-11-18 01:00:23,393 
+线程ID:[25] 
+日志级别：  ERROR 
+错误描述：OnExceptionIndex was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+ 
+
+ 
+记录时间：2018-11-18 01:01:32,412 
+线程ID:[34] 
+日志级别：  ERROR 
+错误描述：IstrueIndex was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+ 
+
+ 
+记录时间：2018-11-18 01:01:32,413 
+线程ID:[34] 
+日志级别：  ERROR 
+错误描述：OnExceptionIndex was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+ 

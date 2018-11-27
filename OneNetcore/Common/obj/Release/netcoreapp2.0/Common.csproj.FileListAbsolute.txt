@@ -1,0 +1,9 @@
+E:\远伦教育\OneNetcore\Common\bin\Release\netcoreapp2.0\Common.deps.json
+E:\远伦教育\OneNetcore\Common\bin\Release\netcoreapp2.0\Common.dll
+E:\远伦教育\OneNetcore\Common\bin\Release\netcoreapp2.0\Common.pdb
+E:\远伦教育\OneNetcore\Common\obj\Release\netcoreapp2.0\Common.csprojResolveAssemblyReference.cache
+E:\远伦教育\OneNetcore\Common\obj\Release\netcoreapp2.0\Common.csproj.CoreCompileInputs.cache
+E:\远伦教育\OneNetcore\Common\obj\Release\netcoreapp2.0\Common.AssemblyInfoInputs.cache
+E:\远伦教育\OneNetcore\Common\obj\Release\netcoreapp2.0\Common.AssemblyInfo.cs
+E:\远伦教育\OneNetcore\Common\obj\Release\netcoreapp2.0\Common.dll
+E:\远伦教育\OneNetcore\Common\obj\Release\netcoreapp2.0\Common.pdb

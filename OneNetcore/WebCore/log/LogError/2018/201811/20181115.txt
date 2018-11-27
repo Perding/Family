@@ -1,0 +1,78 @@
+
+ 
+记录时间：2018-11-15 15:14:03,872 
+线程ID:[3] 
+日志级别：  ERROR 
+错误描述：Istrue不能将值 NULL 插入列 'ID'，表 'Financial.dbo.ARefundes'；列不允许有 Null 值。INSERT 失败。
+语句已终止。
+ 
+
+ 
+记录时间：2018-11-15 15:14:03,901 
+线程ID:[3] 
+日志级别：  ERROR 
+错误描述：OnException不能将值 NULL 插入列 'ID'，表 'Financial.dbo.ARefundes'；列不允许有 Null 值。INSERT 失败。
+语句已终止。
+ 
+
+ 
+记录时间：2018-11-15 15:15:47,927 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：Istrue不能将值 NULL 插入列 'F_DeleteMark'，表 'Financial.dbo.ARefundes'；列不允许有 Null 值。INSERT 失败。
+语句已终止。
+ 
+
+ 
+记录时间：2018-11-15 15:15:47,955 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：OnException不能将值 NULL 插入列 'F_DeleteMark'，表 'Financial.dbo.ARefundes'；列不允许有 Null 值。INSERT 失败。
+语句已终止。
+ 
+
+ 
+记录时间：2018-11-15 15:16:25,091 
+线程ID:[15] 
+日志级别：  ERROR 
+错误描述：Istrue不能将值 NULL 插入列 'F_DeleteMark'，表 'Financial.dbo.ARefundes'；列不允许有 Null 值。INSERT 失败。
+语句已终止。
+ 
+
+ 
+记录时间：2018-11-15 15:16:25,097 
+线程ID:[15] 
+日志级别：  ERROR 
+错误描述：OnException不能将值 NULL 插入列 'F_DeleteMark'，表 'Financial.dbo.ARefundes'；列不允许有 Null 值。INSERT 失败。
+语句已终止。
+ 
+
+ 
+记录时间：2018-11-15 15:17:23,260 
+线程ID:[3] 
+日志级别：  ERROR 
+错误描述：Istrue不能将值 NULL 插入列 'F_DeleteMark'，表 'Financial.dbo.ARefundes'；列不允许有 Null 值。INSERT 失败。
+语句已终止。
+ 
+
+ 
+记录时间：2018-11-15 15:17:23,263 
+线程ID:[3] 
+日志级别：  ERROR 
+错误描述：OnException不能将值 NULL 插入列 'F_DeleteMark'，表 'Financial.dbo.ARefundes'；列不允许有 Null 值。INSERT 失败。
+语句已终止。
+ 
+
+ 
+记录时间：2018-11-15 17:59:48,724 
+线程ID:[25] 
+日志级别：  ERROR 
+错误描述：InsertInput string was not in a correct format.
+ 
+
+ 
+记录时间：2018-11-15 18:00:04,647 
+线程ID:[25] 
+日志级别：  ERROR 
+错误描述：InsertInput string was not in a correct format.
+ 

@@ -1,0 +1,182 @@
+﻿
+@{
+    Layout = null;
+    IList<Entity.M_menu> all = ViewBag.list as IList<Entity.M_menu>;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>远伦教育</title>
+    <link href="~/Css/framework-font.css" rel="stylesheet" />
+    <link href="~/Jscript/layui/css/layui.css" rel="stylesheet" />
+    <link href="~/Css/framework-theme.css" rel="stylesheet" />
+    <link href="~/Jscript/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Jscript/jquery-1.10.2.min.js"></script>
+    <script src="~/Jscript/bootstrap/bootstrap.js"></script>
+    <script src="~/Jscript/layui/layui.js"></script>
+    <style>
+        .dropdownun {
+            border: medium none;
+            border-radius: 3px;
+            box-shadow: 0 0 3px rgba(86, 96, 117, 0.7);
+            display: none;
+            float: left;
+            font-size: 12px;
+            left: 0;
+            list-style: none outside none;
+            padding: 0;
+            position: absolute;
+            text-shadow: none;
+            top: 100%;
+            z-index: 1000;
+            min-width: 120px;
+            background-color: #fff;
+        }
+
+		.ser {
+			font-size: 15px !important;
+			color: black !important;
+			margin-left: 15px !important;
+			text-align: center !important;
+			line-height: 2;
+			text-decoration: none;
+			padding: 5px 5px 5px 5px;
+		}
+
+        .divider {
+            border: 1px solid #ddd
+        }
+
+        .dropdownun li:hover {
+            background: #069df8;
+        }
+    </style>
+</head>
+<body style="overflow: hidden;">
+
+    <div id="ajax-loader" style="cursor: progress; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: #fff; z-index: 10000; overflow: hidden;">
+        <img src="~/image/ajax-loader.gif" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto;" />
+    </div>
+    <div id="theme-wrapper">
+
+        <div id="page-wrapper" class="container" style="margin-right:0px;margin-left:0px;padding-left:0px;padding-right:0px;">
+            <div class="row">
+                <div id="nav-col">
+                    <section id="col-left" class="col-left-nano">
+                        <div id="col-left-inner" class="col-left-nano-content">
+                            <div id="user-left-box" class="clearfix hidden-sm hidden-xs dropdown profile2-dropdown">
+                                <img src="~/image/login_logo.png" />
+                                <div class="user-box">
+                                    <span class="name xiangq" style=" cursor:pointer">
+                                        @ViewBag.RealName <i class="fa fa-angle-down" style=" cursor:pointer"></i>
+                                    </span>
+                                    <ul class="dropdownun animated fadeInRight m-t-xs" style="margin-left:5px;">
+                                        <li style="line-height:2;"><a href="javascript:update()" class="ser update">修改密码</a></li>
+                                        <li class="divider"></li>
+                                        <li style="line-height:2;"><a href="/Login/Login" class="ser">退出</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="collapse navbar-collapse navbar-ex1-collapse" id="sidebar-nav" style="margin-top:30px;">
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li class="nav-header hidden-sm hidden-xs">
+                                        常用菜单
+                                    </li>
+                                    @if (all != null)
+                                    {
+                                        foreach (var item in all)
+                                        {
+                                            if (item.M_type == 3 && item.M_PartentID == "0")
+                                            {
+                                                <li class="common">
+                                                    <a href="#" data-url="@item.M_Url" class="menuItem">
+                                                        <i class="fa @item.M_icon"></i>
+                                                        <span>@item.M_Name</span>
+                                                    </a>
+                                                </li>
+                                            }
+                                            else if (item.M_PartentID == "0")
+                                            {
+                                                <li>
+                                                    <a href="javascript;:" class="dropdown-toggle"><i class="fa @item.M_icon"></i><span>@item.M_Name</span><i class="fa fa-angle-right drop-icon"></i></a>
+                                                    <ul class="submenu">
+                                                        @foreach (Entity.M_menu item1 in all.Where(t => t.M_PartentID == item.M_ID))
+                                                        {
+                                                            <li>
+                                                                <a class="menuItem" data-url="@item1.M_Url">@item1.M_Name</a>
+                                                            </li>
+                                                        }
+
+                                                    </ul>
+                                                </li>
+                                            }
+                                        }
+                                    }
+
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div id="content-wrapper">
+
+                    <div class="content-iframe" style="background-color: #f9f9f9; overflow: hidden; width:100%;height:100%;">
+                        <iframe class="NFine_iframe" width="100%" height="100%" src="/Home/Default" frameborder="0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="~/Jscript/index.js"></script>
+<script>
+    window.onload = function () {
+        $("#ajax-loader").hide();
+	}
+
+	$(function () {
+		layui.use(['form', 'layer', 'laydate'], function () {
+			var form = layui.form, layer = layui.layer, laydate = layui.laydate;
+		
+		});
+        $("#theme-wrapper").css("height", $(window).height())//content-wrapper
+        $("#theme-wrapper").css("width", $(window).width())
+        $(".container").css("height", $(window).height())
+        $("#nav-col").css("height", $(window).height())
+        $("#content-wrapper").css("height", $(window).height())
+        $(".content-iframe").css("height", $(window).height())
+        $('.menuItem').on('click', function () {
+            var url = $(this).attr("data-url");
+            if (url != "") {
+                $(".NFine_iframe").attr("src", url)
+            }
+		});
+		
+		$("body").click(function () {
+			$(".dropdownun").hide();
+		})
+		$(".user-box").hover(function () {
+			$(".dropdownun").show();
+		});
+		$(".dropdownun").hover(function () {
+			$(this).show();
+		}, function () {
+			$(this).hide();
+		})
+	
+
+	})
+
+	function update()
+	{
+		layer.open({
+			type: 2,
+			title: "修改密码",
+			area: ['650px', '300px'], //宽高
+			content: "/Home/UpdatePass"
+		});
+
+	 }
+</script>

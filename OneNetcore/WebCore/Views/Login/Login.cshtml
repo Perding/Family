@@ -1,0 +1,111 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>重庆远伦教育学费系统</title>
+    <link href="~/Jscript/layui/css/layui.css" rel="stylesheet" />
+    <link href="~/Css/Login.css" rel="stylesheet" />
+    <script src="~/Jscript/jquery-1.10.2.min.js"></script>
+    <script src="~/Jscript/layui/layui.js"></script>
+    <script src="~/Jscript/jquery.cookie.js"></script>
+</head>
+<body>
+    <form class="layui-form" lay-filter="*" id="form1">
+        <input type="hidden" value="@ViewBag.states" id="states" />
+        <div class="login_box">
+            <div class="login_l_img"><img src="~/image/login-img.png" /></div>
+
+			<div class="login">
+				<div class="login_logo"><a href="#"><img src="~/image/20181109203527.jpg" /></a></div>
+				<div class="login_name">
+					<p></p>
+				</div>
+				<input type="text" placeholder="用户名" id="username" value="@ViewBag.name" />
+	
+				<input name="password" placeholder="密码"   type="password" id="password" value="@ViewBag.pwd" />
+				
+				@*@if (ViewBag.states == "1")
+				{
+				<input type="checkbox" name="" title="记住密码" lay-filter="stats" lay-skin="primary" checked>
+				}
+				else
+				{
+				<input type="checkbox" name="" title="记住密码" lay-filter="stats" lay-skin="primary" >
+				}*@
+				<input value="登录" style="width:100%;" type="button" id="btn">
+
+			</div>
+        </div>
+    </form>
+</body>
+</html>
+<script>
+   
+    $(function () {
+        layui.use(['form', 'layer', 'element'], function () {
+            var form = layui.form, layer = layui.layer, element = layui.element;
+            form.on('checkbox(stats)', function (data) {
+                if (data.elem.checked) {
+                    $("#states").val("1")
+                } else {
+                    $("#states").val("0")
+                }
+            });
+			$(document).keyup(function (event) {
+				if (event.keyCode == 13) {
+					$("#btn").trigger("click");
+				}
+			});
+            $("#btn").click(function () {
+                var username = $.trim($("#username").val());
+                var password = $.trim($("#password").val());
+                if (username == "") {
+                    layer.tips('请输入用户名', '#btn', {
+                        tips: [2, 'red'] //还可配置颜色
+                    });
+                    return false;
+                }
+                else if (password == "") {
+                    layer.tips('请输入密码', '#btn', {
+                        tips: [2, 'red'] //还可配置颜色
+                    });
+                    return false;
+                }
+                else {
+                   
+                    $("#btn").attr('disabled', 'disabled').val("登陆中...");
+                    $.ajax({
+                        url: "/Login/CheckLogin",
+						data: { u_account: $.trim(username), u_password: $.trim(password), states: $("#states").val() },
+                        type: "post",
+                        dataType: "json",
+                        success: function (data) {
+
+                            if (data.state == "200") {
+                                $("#login_button").val("登录成功，正在跳转...");
+                                window.setTimeout(function () {
+                                    window.location.href = "/Home/Index";
+                                }, 500);
+                            } else {
+                                $("#btn").removeAttr('disabled').val("登录");
+                                $("#switchCode").trigger("click");
+                                layer.tips(data.message, '#btn', {
+                                    tips: [2, 'red'] //还可配置颜色
+                                });
+
+                            }
+                        }
+                    });
+                }
+
+            })
+        })
+    })
+  
+</script>

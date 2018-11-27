@@ -1,0 +1,455 @@
+﻿
+@{
+    Layout = null;
+    IList<Entity.M_menu> all = ViewBag.list as IList<Entity.M_menu>;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Default</title>
+    <link href="~/Jscript/layui/css/layui.css" rel="stylesheet" />
+    <link href="~/Jscript/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Jscript/jquery-1.10.2.min.js"></script>
+    <link href="~/Css/framework-font.css" rel="stylesheet" />
+    <script src="~/Jscript/bootstrap/bootstrap.js"></script>
+    <script src="~/Jscript/layui/layui.js"></script>
+    <style>
+        table td {
+            text-align: center;
+            color: black
+        }
+
+        /*.selected {
+            background: #00ffff;
+            color: black;
+        }*/
+
+        .span {
+            font-size: 20px;
+        }
+
+        childrow td {
+            font-size: 15px;
+            font-weight: 200;
+            font-family: Aharoni
+        }
+
+        .red {
+            background-color: #00ff90
+        }
+    </style>
+</head>
+<body style="overflow-x:hidden;overflow-y:hidden">
+    <form class="layui-form">
+
+        <div class="heider" style="width:100%;height:40px;margin-top:10px;margin-left:20px;">
+			<div style="float:left; width:40%">
+				@if (all != null)
+				{
+					foreach (var item in all)
+					{
+						if (item.M_Url != "view")
+						{
+							if (item.M_Url == "daoru")
+							{
+								<button type="button" class="layui-btn" id="@item.M_Url"><i class="layui-icon"></i>@item.M_Name</button>
+
+							}
+							else
+							{
+								<input type="button" value="@item.M_Name" class="layui-btn layui-btn-normal @item.M_Url" />
+							}
+
+						}
+
+					}
+				}
+
+				<input type="button" value="dayin" class="layui-btn layui-btn-normal daoru" />
+			</div>
+            <div style="float:left;width:30%;">
+                <div class="input-group">
+                    <input type="text" id="name" class="layui-input" placeholder="查询">
+                    <span class="input-group-btn">
+                        <a href="javascript:;" class="layui-btn layui-btn-normal serch" style="">
+                            <i class="layui-icon">&#xe615;</i>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div style="width:100%; overflow-y:auto; overflow-x:hidden" class="body">
+            <table id="demo" style="width:99%;" class="layui-table">
+                <thead>
+                    <tr>
+                        <td style="width:30px;"></td>
+                        <td style="width:20px;">学号</td>
+                        <td style="width:30px;">姓名</td>
+                        <td style="width:50px;">身份证</td>
+                        <td style="width:60px;">应缴金额<br />（单位：元）</td>
+                        <td style="width:60px;">优惠金额<br />（单位：元）</td>
+                        <td style="width:60px;">实缴金额<br />（单位：元）</td>
+                        <td style="width:60px;">欠费金额<br />（单位：元）</td>
+                        <td style="width:40px;">招生老师</td>
+                        <td style="width:40px;">年级</td>
+
+                        <td style="width:30px;">联系方式</td>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </form>
+</body>
+</html>
+<script>
+    var index = 0;
+    $(function () {
+        layui.use(['form', 'layer', 'upload'], function () {
+            var form = layui.form, layer = layui.layer, upload = layui.upload;
+            upload.render({ //允许上传的文件后缀
+                elem: '#daoru'
+                , url: '/Home/UploadFiles'
+                , accept: 'file' //普通文件
+				, before: function (obj) { //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+					index = ityzl_SHOW_LOAD_LAYER("正在导入中");
+                   
+                }
+				, done: function (res) {
+					layer.close(index);
+					GetTable();
+                }
+                , error: function (index, upload) {
+                    layer.closeAll('loading'); //关闭loading
+                }
+            });
+            $(".body").height($(window).height() - 60);
+            GetTable();
+            form.render();
+            $(".serch").click(function () { GetTable() })
+            $("body").on("click", ".trcolor", function () {
+                $("#demo").find("tr").removeClass("red");
+                $(this).addClass("red");
+            })
+
+            $("body").on("click", ".add", function (event) {
+                event.stopPropagation();
+                var id = $(this).parent().parent().attr("id");
+                //$(this).parent().parent().next().html('<tr class="child_row_01 childrow" style=""><td colspan="11">nihaoklsdfalkdfa</td></tr>');
+                $(this).parent().parent().siblings('.child_' + id).toggle();
+                $(this).parent().html('<i class="fa  fa-minus-square-o fa-2x delete"></i>');
+            })
+            $("body").on("click", ".delete", function (e) {
+                e.stopPropagation();
+                var id = $(this).parent().parent().attr("id");
+                $(this).parent().parent().siblings('.child_' + id).toggle();
+                $(this).parent().html('<i class="fa  fa-plus-square-o fa-2x add"></i>');
+            })
+            $(".daoru").click(function () {
+                Dayin();
+            })
+            //修改
+            $(".update").click(function () {
+                var con = 0;
+                $("#demo").find("tr").each(function () {
+                    if ($(this).hasClass("red")) {
+                        con += 1;
+                        var type = $(this).attr("type");
+                        var id = $(this).attr("data-id");
+                        if (type == "1") {
+
+                        }
+                        if (type == "2") {
+                            layer.open({
+                                type: 2,
+                                title: "缴费信息",
+                                area: ['950px', '' + $(window).height() - 50 + 'px'], //宽高
+                                content: "/Home/AddPay?id=" + id
+                            });
+                        }
+                        if (type == "3") {
+                            var cards = $(this).attr("data-cards");
+                            var payMoeny = $(this).attr("data-payMoeny");
+                            var youhui = $(this).attr("data-youhui");
+                            var collecMoney = $(this).attr("data-collecMoney");
+                            layer.open({
+                                type: 2,
+                                title: "退费信息",
+                                area: ['950px', '' + $(window).height() - 50 + 'px'], //宽高
+                                content: "/Enter/Tuihui?id=" + id + "&cards=" + cards + "&collecMoney=" + collecMoney + "&youhui=" + youhui + "&payMoeny=" + payMoeny
+                            });
+                        }
+                    }
+                })
+                if (con == 0) {
+                    layer.msg("请先选择需要修改的记录");
+                }
+
+            })
+            ///删除
+            $(".deletedata").click(function () {
+
+                var con = 0;
+                var data = $("#demo").find("tr").each(function () {
+                    if ($(this).hasClass("red")) {
+                        con += 1;
+                        var type = $(this).attr("type");
+                        var name = $(this).attr("data-name");
+                        var id = $(this).attr("data-id");
+                        if (type == "1") {
+                            layer.confirm('是否确定删除' + name + '的所有信息！', {
+                                title: '提示',
+                                icon: 3,
+                                btn: ['确定', '取消'] //按钮
+                            }, function (index) {
+                                layer.confirm('再次确认是否确定删除' + name + '的所有信息,删除后数据无法恢复！', {
+                                    title: '提示',
+                                    icon: 3,
+                                    btn: ['确定', '取消'] //按钮
+                                }, function (index) {
+                                    $.post("/Enter/Delete", { id: id, type: type }, function (ta) {
+                                        layer.close(index);
+										if (ta.status == "ok") {
+                                            layer.msg(ta.message, { time: 1000 }, function () {
+                                                GetTable();
+                                            });
+
+                                        }
+                                        else {
+                                            layer.msg(ta.message);
+
+                                        }
+
+                                    })
+                                }, function () {
+
+                                });
+                            }, function () {
+
+                            });
+
+                        }
+                        if (type == "2") {
+                            layer.confirm('是否确定删除' + name + '的缴费信息', function (index) {
+                                $.post("/Enter/Delete", { id: id, type: type }, function (msg) {
+                                    layer.close(index);
+                                    if (msg.status == "ok") {
+                                        layer.msg(msg.message, { time: 1000 }, function () {
+                                            GetTable();
+                                        });
+                                    }
+                                    else {
+                                        layer.msg(msg.message);
+
+                                    }
+
+                                })
+                            });
+                        }
+                        if (type == "3") {
+                            layer.confirm('是否确定删除' + name + '的退费信息', function (index) {
+                                $.post("/Enter/Delete", { id: id, type: type }, function (msg) {
+                                    layer.close(index);
+                                    if (msg.status == "ok") {
+                                        layer.msg(msg.message, { time: 1000 }, function () {
+                                            GetTable();
+                                        });
+                                    }
+                                    else {
+                                        layer.msg(msg.message);
+
+                                    }
+
+                                })
+                            });
+                        }
+                        return;
+                    }
+                })
+                if (con == 0) {
+                    layer.msg("请先选择需要删除的记录");
+                }
+            })
+            //新增
+            $(".addtal").click(function () {
+                layer.open({
+                    type: 2,
+                    title: "缴费信息",
+                    area: ['950px', '' + $(window).height() - 50 + 'px'], //宽高
+                    content: "/Home/AddPay"
+                });
+            })
+            //退费
+            $(".tuifei").click(function () {
+                var con = 0;
+                var data = $("#demo").find("tr").each(function () {
+                    if ($(this).hasClass("red")) {
+                        con += 1;
+
+                        var cards = $(this).attr("data-cards");
+                        var payMoeny = $(this).attr("data-payMoeny");
+                        var youhui = $(this).attr("data-youhui");
+                        var collecMoney = $(this).attr("data-collecMoney");
+
+                        layer.open({
+                            type: 2,
+                            title: "退费信息",
+                            area: ['950px', '' + $(window).height() - 50 + 'px'], //宽高
+                            content: "/Enter/Tuihui?cards=" + cards + "&collecMoney=" + collecMoney + "&youhui=" + youhui + "&payMoeny=" + payMoeny
+                        });
+
+                        return;
+                    }
+                })
+                if (con == 0) {
+                    layer.msg("请先选择需要退费的学生");
+                }
+            })
+        })
+    })
+    function GetTable() {
+        $.ajax({
+            url: '/Enter/Serachluru',
+            type: "post",
+            data: { name: $.trim($("#name").val()) },
+            beforeSend: function () {
+				index = ityzl_SHOW_LOAD_LAYER("正在加载中");
+            },
+            success: function (data) {
+                layer.close(index);
+                $("#demo tbody").html('');;
+                if (data.length > 0) {
+                    var html = '';
+                    for (var i = 0; i < data.length; i++) {
+                        html += '<tr class="parent trcolor" id="row_0' + i + '" data-name="' + data[i].name + '"  data-payMoeny="' + data[i].payMoeny + '" data-youhui="' + data[i].youhui + '" data-collecMoney="' + data[i].collecMoney + '"  data-id="' + data[i].id + '"   data-cards="' + data[i].cards + '" type="1">';
+
+                        html += '<td style="width:30px;"> <i class="fa  fa-plus-square-o fa-2x add" style="cursor:pointer"></i></td>';
+                        html += '<td>' + data[i].stuNum + '</td>';
+                        html += '<td>' + data[i].name + '</td>';
+                        html += '<td>' + data[i].cards + '</td>';
+                        html += '<td>' + data[i].collecMoney + '</td>';
+                        html += '<td>' + data[i].youhui + '</td>';
+                        html += '<td>' + data[i].payMoeny + '</td>';
+                        html += '<td>' + data[i].qinfeiMoeny + '</td>';
+                        html += '<td>' + data[i].teacherID + '</td>';
+                        html += '<td>' + data[i].gradeID + '</td>';
+
+                        html += '<td>' + data[i].phoneNum + '</td>';
+                        html += '</tr>';
+
+                        if (data[i].getAStudentPay.length > 0) {
+                            html += '<tr class="child_row_0' + i + ' childrow" style="display:none">';
+                            html += '<td colspan="12">';
+                            html += '<table class="layui-table">';
+                            html += '<caption align="top">缴费记录</caption>';
+                            html += '<thead>';
+                            html += '<tr>';
+                            html += '<td rowspan="2" style="width:120px;">缴费日期</td>';
+                            html += '<td rowspan="2" style="width:100px;">付款方式</td>';
+                            html += '<td rowspan="2" style="width:100px;">收款方式</td>';
+                            html += '<td colspan="3" style="width:80px;">学费</td>';
+                            html += '<td colspan="3" style="width:80px;">住宿费</td>';
+                            html += '<td colspan="3" style="width:80px;">文化费</td>';
+                            html += '<td rowspan="2" style="width:100px;">备注</td>';
+                            html += '</tr>';
+                            html += '<tr>'
+                            html += '<td>应收</td>';
+                            html += '<td>优惠</td>';
+                            html += '<td>实收</td>';
+                            html += '<td>应收</td>';
+                            html += '<td>优惠</td>';
+                            html += '<td>实收</td>';
+                            html += '<td>应收</td>';
+                            html += '<td>优惠</td>';
+                            html += '<td>实收</td>';
+                            html += '</tr>';
+                            html += '</thead>';
+                            for (var j = 0; j < data[i].getAStudentPay.length; j++) {
+                                html += '<tr class="trcolor"  data-name="' + data[i].name + '" data-payMoeny="' + data[i].payMoeny + '" data-youhui="' + data[i].youhui + '" data-collecMoney="' + data[i].collecMoney + '" data-cards="' + data[i].cards + '"  data-id="' + data[i].getAStudentPay[j].id + '" type="2">'
+                                html += '<td style="width:120px;">' + data[i].getAStudentPay[j].payDateString + '</td>';
+                                html += '<td style="width:120px;">' + data[i].getAStudentPay[j].paymentID + '</td>';
+                                html += '<td style="width:120px;">' + data[i].getAStudentPay[j].collectionID + '</td>';
+                                html += '<td style="width:120px;">' + data[i].getAStudentPay[j].xa + '</td>';
+                                html += '<td style="width:120px;">' + data[i].getAStudentPay[j].xb + '</td>';
+                                html += '<td style="width:120px;">' + data[i].getAStudentPay[j].xc + '</td>';
+                                html += '<td style="width:120px;">' + data[i].getAStudentPay[j].za + '</td>';
+                                html += '<td style="width:120px;">' + data[i].getAStudentPay[j].zb + '</td>';
+                                html += '<td style="width:120px;">' + data[i].getAStudentPay[j].zc + '</td>';
+                                html += '<td style="width:120px;">' + data[i].getAStudentPay[j].wa + '</td>';
+                                html += '<td style="width:120px;">' + data[i].getAStudentPay[j].wb + '</td>';
+                                html += '<td style="width:120px;">' + data[i].getAStudentPay[j].wc + '</td>';
+                                html += '<td style="width:120px;">' + data[i].getAStudentPay[j].note + '</td>';
+                                html += '</tr>';
+                            }
+
+                            html += '</table>'
+                            html += '</td>';
+                        }
+                        if (data[i].getARefundes.length > 0) {
+                            html += '<tr class="child_row_0' + i + ' childrow" style="display:none">';
+                            html += '<td colspan="12">';
+                            html += '<table class="layui-table">';
+                            html += '<caption align="top">退费记录</caption>';
+                            html += '<thead>';
+                            html += '<tr>';
+                            html += '<td rowspan="2" style="width:120px;">退费日期</td>';
+                            html += '<td colspan="4" style="width:120px;">类别</td>';
+                            html += '<td rowspan="2" style="width:250px;">备注</td>';
+                            html += '</tr>';
+                            html += '<tr>';
+                            html += '<td>学费</td>';
+                            html += '<td>住宿费</td>';
+                            html += '<td>文化费</td>';
+                            html += '<td>退学</td>';
+                            html += '</tr>';
+                            html += '</thead>';
+                            for (var u = 0; u < data[i].getARefundes.length; u++) {
+                                html += '<tr class="trcolor"  data-name="' + data[i].name + '" data-payMoeny="' + data[i].payMoeny + '" data-youhui="' + data[i].youhui + '" data-collecMoney="' + data[i].collecMoney + '" data-cards="' + data[i].cards + '"  data-id="' + data[i].getARefundes[u].id + '" type="3">'
+                                html += '<td >' + data[i].getARefundes[u].payDate + '</td>';
+                                html += '<td >' + data[i].getARefundes[u].xa + '</td>';
+                                html += '<td >' + data[i].getARefundes[u].za + '</td>';
+                                html += '<td >' + data[i].getARefundes[u].wa + '</td>';
+                                html += '<td >' + data[i].getARefundes[u].tx + '</td>';
+                                html += '<td >' + data[i].getARefundes[u].note + '</td>';
+                                html += '</tr>';
+                            }
+                            html += '</table>';
+                            html += '</td>';
+                            html += '</tr>';
+                        }
+                        if (data[i].getAStudentPay.length == 0 && data[i].getARefundes.length == 0) {
+                            html += '<tr class="child_row_0' + i + ' childrow" style="display:none">';
+                            html += '<td colspan="12">暂无记录';
+                            html += '</td>';
+                            html += '</tr>';
+                        }
+                        html += '</tr>';
+                    }
+                    $("#demo tbody").append(html);
+                }
+
+            },
+            error: function () {
+                layer.msg('读取数据失败！');
+            }
+        });
+
+    }
+    function ityzl_SHOW_LOAD_LAYER(msg) {
+        return layer.msg(msg+'...', { icon: 16, shade: [0.5, '#f5f5f5'], scrollbar: false, time: 0 });
+    }
+	function Dayin(id) {
+		id = '30d8bad5-f79c-4ab7-8191-353f14f98ac0';
+		GetTable();
+        layer.open({
+            type: 2,
+            title: "打印",
+            area: ['200px;', '150px'], //宽高
+            content: "/Enter/Dayin?id="+id
+        });
+	}
+	function UpdateData() { GetTable();}
+</script>

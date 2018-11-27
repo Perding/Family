@@ -1,0 +1,134 @@
+﻿@model Entity.AStudent
+@{
+	ViewData["Title"] = "Dayin";
+	Layout = "~/Views/Shared/_Form.cshtml";
+	IList<Entity.AStudentPay> all = ViewBag.all as IList<Entity.AStudentPay>;
+}
+<style>
+	table, th {
+		border: none;
+		height: 18px
+	}
+
+	td {
+		border: 1px solid #000;
+		height: 18px;
+	}
+</style>
+<script src="~/Jscript/LodopFuncs.js"></script>
+<form class="layui-form">
+	<div id="div2" style="display:none">
+		<style>
+			table {
+			width:700px;
+			}
+			table, th {
+				border: none;
+				height: 18px
+			}
+
+			td {
+				border: 1px solid #000;
+				height: 18px;
+				text-align:center
+			}
+		</style>
+		<table border=0 cellSpacing=0 cellPadding=0 width="100%" height="200" bordercolor="#000000" style="border-collapse:collapse">
+			<caption style="text-align:center"><b><font face="黑体" size="2">缴费单据</font></caption>
+			<thead>
+				<tr style="height:30px;">
+					<th width="8%" colspan="1"><b>日期：</b>@Model.PayDate</th>
+					<th width="8%" colspan="1"><b>学号：</b>@Model.StuNum</th>
+					<th width="10%" colspan="1"><b>姓名：</b>@Model.Name</th>
+					<th width="20%" colspan="2"><b>联系电话：</b>@Model.PhoneNum</th>
+					<th width="40%" colspan="2"><b>付款方式：</b>@Model.PaymentID</th>
+				</tr>
+				
+				<tr style="height:40px;">
+					<td width="20%"><b>缴费科目</b></td>
+					<td width="15%"><b>应缴金额</b></td>
+					<td width="15%"><b>优惠金额</b></td>
+					<td width="15%"><b>实缴金额</b></td>
+					<td width="15%"><b>欠费金额</b></td>
+					<td width="20%"><b>备注</b></td>
+				</tr>
+			</thead>
+			<tbody>
+				@if (all!=null)
+				{
+					int i = 0;
+					foreach (var item in all)
+					{
+				<tr>
+					<td>
+						@item.PaymentID
+					</td>
+					<td>@item.xa</td>
+					<td>@item.xb</td>
+					<td>@item.xc</td>
+					<td>@item.xd</td>
+					<td>@item.Note</td>
+				</tr>
+					}
+				}
+			</tbody>
+			<tfoot>
+				<tr>
+					<th width="20%" ><b>操作员:</b>@ViewBag.RealName　</th>
+					<th width="20%"  colspan="2"><b>联系电话:</b>023-64358555　</th>
+					<th width="60%" colspan="3"><b>打印日期：</b>@ViewBag.date</th>
+				</tr>
+				<tr>
+					<th width="100%;" colspan="6" style="text-align:right"><b>联系地址：</b>重庆市沙坪坝区大学城南路1号教育科</th>
+				</tr>
+			</tfoot>
+		</table>
+
+	</div>
+	
+	<div style="width:100%;position:relative;text-align:center;" id="body">
+		<input type="button" value="打印" id="dayin" onclick="myPreview()" class="layui-btn layui-btn-lg layui-btn-norma" style="" />
+	</div>
+</form>
+<script>
+	function CheckIsInstall() {
+		try {
+			var LODOP = getLodop();
+			if (LODOP.VERSION) {
+				if (LODOP.CVERSION)
+					alert("当前有C-Lodop云打印可用!\n C-Lodop版本:" + LODOP.CVERSION + "(内含Lodop" + LODOP.VERSION + ")");
+				else
+					alert("本机已成功安装了Lodop控件！\n 版本号:" + LODOP.VERSION);
+			};
+		} catch (err) {
+		}
+	}; 
+	$(function () {
+		CheckIsInstall();
+        $("#body").height($(window).height())
+       $("#body").css("margin-top", $(window).height() / 2-20);
+    })
+    //var LODOP; //声明为全局变量 
+	function myCreatePage() {
+        LODOP = getLodop();
+		LODOP.PRINT_INIT("打印控件功能演示_Lodop功能_百分比单位演示");
+		LODOP.ADD_PRINT_TABLE("40mm", 10, "100%", 220, document.getElementById("div2").innerHTML);
+		LODOP.ADD_PRINT_HTM("10mm", "40mm", "100%", 200, "<span style='width:700px;;margin-top:5px;text-align:center;font-weight:bold;font-size:15pt'><b>重庆市沙坪坝新远伦教育培训学校</b></span>");
+		LODOP.ADD_PRINT_IMAGE(5, "40mm", 100, 100, "<img border='0' src='/image/20181109203527.jpg' />");
+		LODOP.SET_PRINT_STYLEA(0, "Stretch", 1);
+		LODOP.ADD_PRINT_IMAGE(30, "140mm", 100, 100, "<img src='/qrcode/@ViewBag.url' />");
+		LODOP.SET_PRINT_STYLEA(0, "Stretch", 1);
+      //  LODOP.ADD_PRINT_ELLIPSE("0%", "0%", "100%", "50%", 0, 1);
+       // LODOP.ADD_PRINT_TABLE("50%", 1, "100%", "49%", "<body style='margin:0'>" + document.getElementById("table02").innerHTML + "</body>");
+    };
+    function myDesign() {
+        myCreatePage();
+        LODOP.PRINT_DESIGN();
+    };
+    function myPreview() {
+        myCreatePage();
+        LODOP.PREVIEW();
+    };		
+  
+
+</script>

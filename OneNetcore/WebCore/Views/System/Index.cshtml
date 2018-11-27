@@ -1,0 +1,320 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Jscript/layui/css/layui.css" rel="stylesheet" />
+    <link href="~/Jscript/ztree/css/zTreeStyle.css" rel="stylesheet" />
+    <script src="~/Jscript/jquery-1.10.2.min.js"></script>
+    <script src="~/Jscript/ztree/js/jquery.ztree.core-3.5.min.js"></script>
+    <script src="~/Jscript/layui/layui.js"></script>
+
+</head>
+<body>
+    <form class="layui-form">
+        <input type="hidden" value="" id="tab1" />
+        <input type="hidden" value="" id="tab2" />
+        <div style="width:100%; overflow-y:auto; overflow-x:hidden" class="body">
+            <div class="left" style="float:left;overflow-y:auto;overflow-x:hidden;border: 1px solid #88baf1;height:90%; width:200px;">
+                <div class="gxs">
+                    <ul id="treeul" class="ztree"></ul>
+                </div>
+            </div>
+            <div class="lyk"  style="float:left;overflow-y:auto;overflow-x:hidden;border: 1px solid #88baf1;height:90%;position: relative;width:80%;">
+                <table id="demo" lay-filter="demo" style="width:60%; display:none"></table>
+            </div>
+        </div>
+    </form>
+    <script type="text/html" id="switchTpl">
+        <!-- 这里的 checked 的状态只是演示 -->
+        <input type="checkbox" name="sex" value="{{d.f_EnableMark}}" lay-skin="switch" lay-text="有效|无效" lay-filter="sexDemo" {{ d.f_EnableMark == 1 ? 'checked' : '' }} disabled>
+    </script>
+    <script type="text/html" id="switchTp2">
+        <!-- 这里的 checked 的状态只是演示 -->
+        <input type="checkbox" name="sex" value="{{d.f_enablemark}}" lay-skin="switch" lay-text="有效|无效" lay-filter="sexDemo" {{ d.f_enablemark == 1 ? 'checked' : '' }} disabled>
+    </script>
+    <script type="text/html" id="toolbarDemo">
+        <div class="layui-btn-container">
+            <input type="button" class="layui-btn layui-btn-sm add" value="新增" lay-event="getCheckData" />
+        </div>
+    </script>
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+</body>
+</html>
+
+<script>
+    
+    var zNodes;
+    var zTree;
+    var tree = null;
+    var setting = {
+        data: {
+            key: {
+                title: "name"
+            },
+            simpleData: {
+                enable: true
+            }
+        },
+        view: {
+            showIcon: false
+        },
+        async: {
+            enable: true,
+            url: "/System/GetTree", // 异步加载时访问的页面  
+            type: 'post',
+            dataType: 'json',
+             autoParam: ["id"],
+            otherParam: { "mothed": "frist" }
+        }
+    };
+  
+    $(function () {
+       
+        $(".body").height($(window).height())
+        $(".left,.lyk").height($(window).height())
+        $.fn.zTree.init($("#treeul"), setting, zNodes);
+        layui.use(['form', 'layer'], function () {
+            var form = layui.form, layer = layui.layer
+        })
+    })
+    function liebei(id)
+    {
+        $("#tab1").val("");
+        $("#tab2").val(id);
+        layui.use(['laypage', 'form', 'layer', 'table'], function () {
+            var laypage = layui.laypage, form = layui.form, layer = layui.layer, table = layui.table;
+            table.render({
+                elem: "#demo",
+                id: "tabReload1",
+                url: "/System/GetTableGuid",
+                toolbar: '#toolbarDemo',
+                where: { id: id },
+                method: "post",
+                page: false,
+                width: window.innerWidth,
+                height: 'full-300',
+                loading: true,
+                text: {
+                    none: '暂无相关数据'
+                },
+                cols: [[
+                    { type: 'numbers' }
+                    , { field: 'f_ItemName', align: 'center', width: 150, title: '名称' }
+                    , { field: 'f_ItemCode', align: 'center', width: 150, title: '编号' }
+                    , { field: 'f_enablemark', align: 'center', templet: '#switchTp2', width: 150, title: '是否有效' }
+                    , { field: 'f_CreatorTime', align: 'center', width: 200, title: '创建时间', templet: function (d) { return d.f_CreatorTime } }
+                    , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 'auto' }
+                ]]
+            })
+            table.on('tool(demo)', function (obj) {
+                var data = obj.data;
+                //console.log(obj)
+                if (obj.event === 'del') {
+                    layer.confirm('是否确定删除' + data.f_ItemName + '', function (index) {
+                        $.post("/System/DeleteGuid", { F_ID: data.f_ID }, function (msg) {
+                            liebei($("#tab2").val());
+
+                        })
+                        layer.close(index);
+                    });
+
+                } else if (obj.event === 'edit') {
+                    layer.open({
+                        id: "local",
+                        type: 2,
+                        title: "修改缴",
+                        area: ['650px', '550px'], //宽高
+                        content: "/System/AddGuid?id=" + $("#tab2").val() + "&fid=" + data.f_ID,
+                        success: function (layero, index) {
+
+                        }
+                    });
+                }
+            });
+            table.on('toolbar(demo)', function (obj) {
+          
+                switch (obj.event) {
+                    case 'getCheckData':
+                        if ($("#tab2").val() != "") {
+                            layer.open({
+                                id: "local",
+                                type: 2,
+                                title: "添加",
+                                area: ['650px', '550px'], //宽高
+                                content: "/System/AddGuid?id=" + $("#tab2").val(),
+                                success: function (layero, index) {
+
+                                }
+                            });
+                        }
+                        break;
+                  
+                };
+            });
+           
+        })
+       
+    }
+    function setNewOrgId(id,type)
+    {
+       
+      
+        $("#tab2").val("");
+        $("#tab1").val(id);
+        layui.use(['laypage', 'form', 'layer', 'table'], function () {
+            var laypage = layui.laypage, form = layui.form, layer = layui.layer, table = layui.table;
+            table.render({
+                elem: "#demo",
+                id: "tabReload",
+                url: "/System/GetTableKey",
+                toolbar: '#toolbarDemo',
+                where: { id: id },
+                method: "post",
+                page: false,
+                width: window.innerWidth,
+                height: 'full-300',
+                loading: true,
+                text: {
+                    none: '暂无相关数据'
+                },
+                cols: [[
+                    { type: 'numbers' }
+                    , { field: 'f_FullName', align: 'center', width: 150, title: '名称' }
+                    , { field: 'f_Pay', align: 'center', width: 150, title: '费用（单位：元）' }
+                    , { field: 'f_EnableMark', align: 'center', templet: '#switchTpl', width: 150, title: '是否有效' }
+                    , { field: 'f_CreatorTime', align: 'center', width: 200, title: '创建时间', templet: function (d) { return d.f_CreatorTime.replace("/T/"," ") } }
+                    , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 'auto' }
+                ]]
+            })
+            //监听行工具事件
+            table.on('tool(demo)', function (obj) {
+                var data = obj.data;
+                //console.log(obj)
+                if (obj.event === 'del') {
+                    layer.confirm('是否确定删除' + data.f_FullName + '', function (index) {
+                        $.post("/System/Deletekey1", { F_ID: data.f_ID }, function (msg) {
+                            setNewOrgId($("#tab1").val());
+
+                        })
+                        layer.close(index);
+                    });
+                   
+                } else if (obj.event === 'edit') {
+                    layer.open({
+                        id: "local",
+                        type: 2,
+                        title: "修改缴费类别",
+                        area: ['650px', '550px'], //宽高
+                        content: "/System/Addkey1?id=" + $("#tab1").val() + "&fid=" + data.f_ID,
+                        success: function (layero, index) {
+
+                        }
+                    });
+                }
+            });
+            table.on('toolbar(demo)', function (obj) {
+               // var checkStatus = table.checkStatus(obj.config.id);
+                switch (obj.event) {
+                    case 'getCheckData':
+                        if ($("#tab1").val()!="") {
+                            layer.open({
+                                id: "local",
+                                type: 2,
+                                title: "添加缴费类别",
+                                area: ['650px', '550px'], //宽高
+                                content: "/System/Addkey1?id=" + $("#tab1").val(),
+                                success: function (layero, index) {
+
+                                }
+                            });
+                        }
+                        break;
+                 
+                };
+            });
+
+           
+        })
+       
+    }
+    function SetlAYER(id)
+    {
+        $("#div1").show();
+        $("#div2").hide();
+        layui.use(['laypage', 'form', 'layer', 'table'], function () {
+            var laypage = layui.laypage, form = layui.form, layer = layui.layer, table = layui.table;
+            table.render({
+                elem: "#demo",
+                id: "tabReload",
+                url: "/System/GetTableKey",
+               
+                where: { id: id },
+                method: "post",
+                page: false,
+                width: window.innerWidth,
+                height: 'full-300',
+                loading: true,
+                text: {
+                    none: '暂无相关数据'
+                },
+                cols: [[
+                    { type: 'numbers' }
+                    , { field: 'f_FullName', align: 'center', width: 150, title: '名称' }
+                    , { field: 'f_Pay', align: 'center', width: 150, title: '费用（单位：元）' }
+                    , { field: 'f_EnableMark', align: 'center', templet: '#switchTpl', width: 150, title: '是否有效' }
+                    , { field: 'f_CreatorTime', align: 'center', width: 'auto', title: '创建时间', templet: function (d) { return d.f_CreatorTime.replace("/T/", " ") } }
+                ]]
+            })
+        })
+
+    }
+    function SetlGuid(id)
+    {
+        $("#div1").show();
+        $("#div2").hide();
+        layui.use(['laypage', 'form', 'layer', 'table'], function () {
+            var laypage = layui.laypage, form = layui.form, layer = layui.layer, table = layui.table;
+            table.render({
+                elem: "#demo",
+                id: "tabReload1",
+                url: "/System/GetTableKey",
+               
+                where: { id: id },
+                method: "post",
+                page: false,
+                width: window.innerWidth,
+                height: 'full-300',
+                loading: true,
+                text: {
+                    none: '暂无相关数据'
+                },
+                cols: [[
+                    { type: 'numbers' }
+                   
+                    , { field: 'f_FullName', align: 'center', width: 150, title: '名称' }
+                    , { field: 'f_Encode', align: 'center', width: 150, title: '编号' }
+                    , { field: 'f_EnableMark', align: 'center', templet: '#switchTpl', width: 150, title: '是否有效' }
+                    , { field: 'f_CreatorTime', align: 'center', width: 'auto', title: '创建时间', templet: function (d) { return d.f_CreatorTime.replace("/T/", " ") } }
+                ]]
+            })
+
+          
+        })
+
+     }
+    function qingkong()
+    {
+        $("#tab1").val("");
+        $("#tab2").val("");
+    }
+</script>

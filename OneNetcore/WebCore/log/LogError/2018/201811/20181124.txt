@@ -1,0 +1,142 @@
+
+ 
+记录时间：2018-11-24 10:23:14,024 
+线程ID:[20] 
+日志级别：  ERROR 
+错误描述：OnException关键字 'AND' 附近有语法错误。
+ 
+
+ 
+记录时间：2018-11-24 15:11:27,164 
+线程ID:[13] 
+日志级别：  ERROR 
+错误描述：IstrueIndex was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+ 
+
+ 
+记录时间：2018-11-24 15:11:27,170 
+线程ID:[13] 
+日志级别：  ERROR 
+错误描述：OnExceptionIndex was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+ 
+
+ 
+记录时间：2018-11-24 15:13:31,938 
+线程ID:[26] 
+日志级别：  ERROR 
+错误描述：Istrue“=”附近有语法错误。
+ 
+
+ 
+记录时间：2018-11-24 15:13:31,942 
+线程ID:[26] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-24 16:08:03,227 
+线程ID:[16] 
+日志级别：  ERROR 
+错误描述：OnExceptionUnable to resolve service for type 'Service.IService.IQRCode' while attempting to activate 'WebCore.Controllers.EnterController'.
+ 
+
+ 
+记录时间：2018-11-24 16:09:37,422 
+线程ID:[15] 
+日志级别：  ERROR 
+错误描述：OnExceptionUnable to resolve service for type 'Service.IService.IQRCode' while attempting to activate 'WebCore.Controllers.EnterController'.
+ 
+
+ 
+记录时间：2018-11-24 16:10:13,412 
+线程ID:[15] 
+日志级别：  ERROR 
+错误描述：OnExceptionUnable to resolve service for type 'Service.IService.IQRCode' while attempting to activate 'WebCore.Controllers.EnterController'.
+ 
+
+ 
+记录时间：2018-11-24 16:10:29,399 
+线程ID:[15] 
+日志级别：  ERROR 
+错误描述：OnExceptionUnable to resolve service for type 'Service.IService.IQRCode' while attempting to activate 'WebCore.Controllers.EnterController'.
+ 
+
+ 
+记录时间：2018-11-24 16:12:49,366 
+线程ID:[9] 
+日志级别：  ERROR 
+错误描述：OnExceptionUnable to resolve service for type 'Service.IService.IQRCode' while attempting to activate 'WebCore.Controllers.EnterController'.
+ 
+
+ 
+记录时间：2018-11-24 16:14:52,357 
+线程ID:[14] 
+日志级别：  ERROR 
+错误描述：OnExceptionUnable to resolve service for type 'Service.IService.IQRCode' while attempting to activate 'WebCore.Controllers.EnterController'.
+ 
+
+ 
+记录时间：2018-11-24 16:14:53,891 
+线程ID:[15] 
+日志级别：  ERROR 
+错误描述：OnExceptionUnable to resolve service for type 'Service.IService.IQRCode' while attempting to activate 'WebCore.Controllers.EnterController'.
+ 
+
+ 
+记录时间：2018-11-24 16:15:27,017 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：OnExceptionUnable to resolve service for type 'Service.IService.IQRCode' while attempting to activate 'WebCore.Controllers.EnterController'.
+ 
+
+ 
+记录时间：2018-11-24 16:15:29,546 
+线程ID:[14] 
+日志级别：  ERROR 
+错误描述：OnExceptionUnable to resolve service for type 'Service.IService.IQRCode' while attempting to activate 'WebCore.Controllers.EnterController'.
+ 
+
+ 
+记录时间：2018-11-24 16:15:33,295 
+线程ID:[9] 
+日志级别：  ERROR 
+错误描述：OnExceptionUnable to resolve service for type 'Service.IService.IQRCode' while attempting to activate 'WebCore.Controllers.EnterController'.
+ 
+
+ 
+记录时间：2018-11-24 16:33:42,249 
+线程ID:[14] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-24 21:17:09,182 
+线程ID:[11] 
+日志级别：  ERROR 
+错误描述：IstrueUnable to cast object of type 'System.Data.ProviderBase.DbConnectionClosedConnecting' to type 'System.Data.SqlClient.SqlInternalConnectionTds'.
+ 
+
+ 
+记录时间：2018-11-24 21:17:09,189 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：IstrueBeginExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+ 
+
+ 
+记录时间：2018-11-24 21:17:09,215 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：OnExceptionBeginExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+ 
+
+ 
+记录时间：2018-11-24 21:17:09,215 
+线程ID:[11] 
+日志级别：  ERROR 
+错误描述：OnExceptionUnable to cast object of type 'System.Data.ProviderBase.DbConnectionClosedConnecting' to type 'System.Data.SqlClient.SqlInternalConnectionTds'.
+ 

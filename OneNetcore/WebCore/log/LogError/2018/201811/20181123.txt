@@ -1,0 +1,629 @@
+
+ 
+记录时间：2018-11-23 00:28:46,919 
+线程ID:[19] 
+日志级别：  ERROR 
+错误描述：OnExceptionThe header contains invalid values at index 0: 'attachment'
+ 
+
+ 
+记录时间：2018-11-23 00:33:38,050 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：OnExceptionThe given key 'xls' was not present in the dictionary.
+ 
+
+ 
+记录时间：2018-11-23 11:00:07,453 
+线程ID:[27] 
+日志级别：  ERROR 
+错误描述：OnExceptionCould not find a part of the path 'E:\远伦教育\OneNetcore\WebCore\wwwroot\upload\20181123110007.xls\daoru.xls'.
+ 
+
+ 
+记录时间：2018-11-23 11:37:11,715 
+线程ID:[17] 
+日志级别：  ERROR 
+错误描述：OnExceptionCannot find column 13.
+ 
+
+ 
+记录时间：2018-11-23 12:46:59,281 
+线程ID:[9] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-23 13:41:44,689 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-23 14:08:39,466 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:39,637 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:39,830 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:40,052 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:40,688 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:41,196 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:41,511 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:41,629 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:41,844 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:42,763 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:43,549 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:43,795 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:44,126 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:44,691 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:44,948 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:45,218 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Cannot find column 13.=Blank
+ 
+
+ 
+记录时间：2018-11-23 14:08:45,320 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:45,391 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:45,519 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:45,819 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:46,002 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:46,201 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:46,310 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:46,430 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:46,528 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Cannot find column 13.=Blank
+ 
+
+ 
+记录时间：2018-11-23 14:08:46,630 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:46,738 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:47,122 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:47,608 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:47,882 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:47,965 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:48,042 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:48,194 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:08:48,417 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Cannot find column 13.=Blank
+ 
+
+ 
+记录时间：2018-11-23 14:08:48,484 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:23,382 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:23,466 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:23,529 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:23,606 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:23,673 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:23,792 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:23,928 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:24,150 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:24,540 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:24,623 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:24,701 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:24,782 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:24,847 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:25,014 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:25,095 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:25,347 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Cannot find column 13.=Blank
+ 
+
+ 
+记录时间：2018-11-23 14:16:25,454 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:25,539 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:25,670 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:26,101 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:26,445 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:26,601 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:27,347 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:27,793 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:27,925 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Cannot find column 13.=Blank
+ 
+
+ 
+记录时间：2018-11-23 14:16:28,041 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:28,134 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:28,330 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:28,624 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:28,759 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:28,846 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:28,936 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:28,998 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 14:16:29,070 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Cannot find column 13.=Blank
+ 
+
+ 
+记录时间：2018-11-23 14:16:29,547 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 15:43:18,810 
+线程ID:[20] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 15:43:19,266 
+线程ID:[20] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 15:43:19,596 
+线程ID:[20] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 15:43:20,325 
+线程ID:[20] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 15:43:20,519 
+线程ID:[20] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 15:43:21,657 
+线程ID:[20] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 15:43:22,691 
+线程ID:[20] 
+日志级别：  ERROR 
+错误描述：导入Excel类型出错Unable to cast object of type 'NPOI.HSSF.UserModel.HSSFCell' to type 'System.IConvertible'.=Numeric
+ 
+
+ 
+记录时间：2018-11-23 17:41:54,610 
+线程ID:[13] 
+日志级别：  ERROR 
+错误描述：Istrue违反了 PRIMARY KEY 约束“PK_Student”。不能在对象“dbo.AStudent”中插入重复键。重复键值为 (1004)。
+语句已终止。
+ 
+
+ 
+记录时间：2018-11-23 17:49:31,450 
+线程ID:[29] 
+日志级别：  ERROR 
+错误描述：Istrue违反了 PRIMARY KEY 约束“PK_Student”。不能在对象“dbo.AStudent”中插入重复键。重复键值为 (1004)。
+语句已终止。
+ 
+
+ 
+记录时间：2018-11-23 17:52:15,277 
+线程ID:[51] 
+日志级别：  ERROR 
+错误描述：Istrue违反了 PRIMARY KEY 约束“PK_Student”。不能在对象“dbo.AStudent”中插入重复键。重复键值为 (1004)。
+语句已终止。
+ 
+
+ 
+记录时间：2018-11-23 17:59:57,553 
+线程ID:[23] 
+日志级别：  ERROR 
+错误描述：GetListSql违反了 PRIMARY KEY 约束“PK_Student”。不能在对象“dbo.AStudent”中插入重复键。重复键值为 (1004)。
+语句已终止。
+ 
+
+ 
+记录时间：2018-11-23 21:43:34,194 
+线程ID:[25] 
+日志级别：  ERROR 
+错误描述：OnExceptionString reference not set to an instance of a String.
+Parameter name: s
+ 
+
+ 
+记录时间：2018-11-23 21:44:40,975 
+线程ID:[25] 
+日志级别：  ERROR 
+错误描述：OnExceptionString reference not set to an instance of a String.
+Parameter name: s
+ 

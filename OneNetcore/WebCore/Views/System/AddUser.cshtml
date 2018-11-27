@@ -1,0 +1,229 @@
+﻿@model Entity.UserInfo
+@{
+    ViewData["Title"] = "AddUser";
+    Layout = "~/Views/Shared/_Form.cshtml";
+}
+<link href="~/Jscript/wdtree/tree.css" rel="stylesheet" />
+<link href="~/Jscript/wizard/wizard.css" rel="stylesheet" />
+<script src="~/Jscript/validate/jquery.validate.min.js"></script>
+<script src="~/Jscript/wizard/wizard.js"></script>
+<script src="~/Jscript/wdtree/tree.js"></script>
+<script src="~/Jscript/Help.js"></script>
+<style>
+ .form-control-feedback.error {
+        color: #e46f61;
+       
+        right: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        z-index: 99;
+    }
+    .formValue.error {
+        background-color: rgb(255, 250, 250);
+        border-color: rgb(231, 190, 190);
+    }
+</style>
+@using (Html.BeginForm("InsertUser", "System", FormMethod.Post, new { id = "form1", @class = "layui-form" }))
+{
+    @Html.AntiForgeryToken()
+   
+<div class="widget-body">
+    <div id="wizard" class="wizard" data-target="#wizard-steps" style="border-left: none; border-top: none; border-right: none;">
+        <ul class="steps">
+            <li data-target="#step-1" class="active"><span class="step">1</span>用户信息<span class="chevron"></span></li>
+            <li data-target="#step-2"><span class="step">2</span>菜单权限<span class="chevron"></span></li>
+        </ul>
+    </div>
+    <input type="hidden" value="@(Model!=null?Model.u_isEnable:1)" id="u_isEnable" name="u_isEnable" />
+    <input type="hidden" value="@(Model==null?"":Model.u_userid)" id="u_userid" name="u_userid" />
+    <input type="hidden" value="@(Model==null?"":Model.u_password)" id="pid" name="pid" />
+    <input type="hidden" value="@(Model==null?"":Model.u_account)" id="cid" name="cid" />
+    <div class="step-content" id="wizard-steps" style="border-left: none; border-bottom: none; border-right: none; overflow-y:auto; overflow-x:hidden">
+        <div class="step-pane active" id="step-1" style="margin: 10px; margin-bottom: 0px;">
+            <table style="width:100%;">
+                <tr>
+                    <td align="right" width="15%">登陆名称：</td>
+                    <td align="left" width="80%" class="formValue">
+                        <input type="text" autocomplete='off' name="u_account" id="u_account" class="layui-input formValue required" value="@(Model==null?"":Model.u_account)" lay-verify="required" style="width:90%;" />
+
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" width="15%">登陆密码：</td>
+                    <td align="left" width="80%" class="formValue">
+                        <input type="password" autocomplete="new-password" onfocus="this.type='password'" name="u_password" id="u_password" class="layui-input formValue required" value="@(Model==null?"":Model.u_password)" lay-verify="required" value="" style="width:90%;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" width="15%">姓名：</td>
+                    <td align="left" width="80%" class="formValue">
+                        <input type="text" name="u_realName" id="u_realName" class="layui-input formValue required" value="@(Model==null?"":Model.u_realName)" lay-verify="required" style="width:90%;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" width="15%">IP地址：</td>
+                    <td align="left" width="80%" class="formValue">
+                        <input type="text" name="U_IP" id="U_IP" P class="layui-input formValue required" value="@(Model==null?"":Model.U_IP)" lay-verify="required" style="width:90%;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" width="15%">联系方式：</td>
+                    <td align="left" width="80%" class="formValue">
+                        <input type="text" name="u_phone" id="u_phone" class="layui-input  required" value="@(Model==null?0:Model.u_phone)" lay-verify="required" style="width:90%;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" width="15%">是否有效：</td>
+                    <td align="left" width="80%" class="formValue" style="text-align:left">
+
+                        <input type="checkbox" name="open" lay-skin="switch" lay-filter="u_isEnable" lay-text="有效|无效" @(Model == null ? "checked" : Model.u_isEnable == 1 ? "checked" : "")>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="step-pane" id="step-2">
+            <div id="permissionTree"></div>
+
+        </div>
+    </div>
+
+    <div class="form-button" id="wizard-actions">
+        <a id="btn_last" disabled class="layui-btn btn-prev">上一步</a>
+        <a id="btn_next" class="layui-btn btn-next">下一步</a>
+        <a id="btn_finish" class="layui-btn" style="display: none;" onclick="submitForm()">完成</a>
+    </div>
+</div>
+   
+    }
+
+    <script>
+        window.onload = function () {
+
+            if ($("#u_userid").val() == "") {
+                document.getElementById('u_account').value = '';
+                document.getElementById('u_password').value = ''
+            }
+            else { 
+                document.getElementById('u_account').value = $("#cid").val() 
+                document.getElementById('u_password').value = $("#pid").val() 
+            }
+        };
+      
+        var index = parent.layer.getFrameIndex(window.name);
+        $(function () {
+            var widget = $(".widget-body").height($(window).height() - $("#wizard-actions").height())
+            $("#wizard-steps").height($(window).height() - $("#wizard-actions").height() - $("#wizard").height());
+            layui.use(['form', 'layer', 'util', 'laydate'], function () {
+                var form = layui.form, layer = layui.layer, util = layui.util, laydate = layui.laydate;
+                tree();
+                form.on('switch(u_isEnable)', function (data) {
+                    if (this.checked) {
+                        $("#u_isEnable").val("1");
+                    }
+                    else {
+                        $("#u_isEnable").val("0");
+                    }
+
+                });
+                $('#wizard').wizard().on('change', function (e, data) {
+                    var u_account = $.trim($("#u_account").val());
+                    var u_password = $.trim($("#u_password").val());
+                    var u_realName = $.trim($("#u_realName").val());
+                    var U_IP = $.trim($("#U_IP").val());
+                    var $finish = $("#btn_finish");
+                    var $next = $("#btn_next");
+                    console.log(data);
+                    if (data.direction == "next") {
+                     
+                        switch (data.step) {
+                            case 1:
+                                if (u_account == "") {
+                                    layer.msg("登陆名不能为空");
+                                    return false;
+                                }
+                                if (u_password == "") {
+                                    layer.msg("密码不能为空");
+                                    return false;
+                                }
+                                if (u_realName == "") {
+                                    layer.msg("姓名不能为空");
+                                    return false;
+                                }
+                                if (U_IP == "") {
+                                    layer.msg("IP地址名不能为空");
+                                    return false;
+                                }
+                                $finish.show();
+                                $next.hide();
+                                break;
+                            
+                            default:
+                                break;
+                        }
+                    } else {
+                        $finish.hide();
+                        $next.show();
+                    }
+                });
+                form.on('submit(demo1)', function (data) {
+                    $(".cli").attr('disabled', 'disabled').val("保存中...");
+
+                    $("#form1").ajaxSubmit(function (msg) {
+                        if (msg.status == "ok") {
+                            layer.msg("保存成功", { time: 1000 }, function () {
+                                //
+                                window.parent.location.reload();
+                                parent.layer.close(index);
+                            });
+                        }
+                        else {
+                            $(".cli").removeAttr('disabled').val("确定");
+
+                            layer.msg(msg.message)
+                        }
+                    });
+                    return false;
+                });
+            })
+        })
+        function submitForm()
+        {
+            var postData = $("#form1").formSerialize();
+            postData["MidList"] = String($("#permissionTree").getCheckedNodes());
+            $.ajax({
+                url: '/System/InsertUser',
+                data: postData,
+                type: "post",
+                dataType: "json",
+                beforeSend: function () {
+                    i = ityzl_SHOW_LOAD_LAYER();
+                },
+                success: function (msg) {
+                    layer.close(i);
+                    if (msg.status == "ok") {
+                        layer.msg(msg.message, { time: 500 }, function () {
+                            window.parent.location.reload();
+                            parent.layer.close(index);
+                           
+                        });
+                    }
+                    else {
+                        layer.msg(msg.message);
+                    }
+                },
+                error: function () {
+                    layer.msg("保存失败");
+                }
+            })
+
+        }
+        function ityzl_SHOW_LOAD_LAYER() {
+            return layer.msg('正在保存中...', { icon: 16, shade: [0.5, '#f5f5f5'], scrollbar: false, time: 0 });
+        }
+        function tree() {
+            $("#permissionTree").treeview({
+                showcheck: true,
+                url: "/System/GetMenuTree?uid=" + $("#u_userid").val()
+            });
+        }
+    </script>

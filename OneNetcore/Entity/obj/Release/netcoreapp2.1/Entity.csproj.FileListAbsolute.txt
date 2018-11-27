@@ -1,0 +1,17 @@
+E:\项目\OneNetcore\Entity\bin\Release\netcoreapp2.1\Entity.deps.json
+E:\项目\OneNetcore\Entity\bin\Release\netcoreapp2.1\Entity.dll
+E:\项目\OneNetcore\Entity\bin\Release\netcoreapp2.1\Entity.pdb
+E:\项目\OneNetcore\Entity\obj\Release\netcoreapp2.1\Entity.csproj.CoreCompileInputs.cache
+E:\项目\OneNetcore\Entity\obj\Release\netcoreapp2.1\Entity.AssemblyInfoInputs.cache
+E:\项目\OneNetcore\Entity\obj\Release\netcoreapp2.1\Entity.AssemblyInfo.cs
+E:\项目\OneNetcore\Entity\obj\Release\netcoreapp2.1\Entity.dll
+E:\项目\OneNetcore\Entity\obj\Release\netcoreapp2.1\Entity.pdb
+E:\远伦教育\OneNetcore\Entity\bin\Release\netcoreapp2.1\Entity.deps.json
+E:\远伦教育\OneNetcore\Entity\bin\Release\netcoreapp2.1\Entity.dll
+E:\远伦教育\OneNetcore\Entity\bin\Release\netcoreapp2.1\Entity.pdb
+E:\远伦教育\OneNetcore\Entity\obj\Release\netcoreapp2.1\Entity.csprojResolveAssemblyReference.cache
+E:\远伦教育\OneNetcore\Entity\obj\Release\netcoreapp2.1\Entity.csproj.CoreCompileInputs.cache
+E:\远伦教育\OneNetcore\Entity\obj\Release\netcoreapp2.1\Entity.AssemblyInfoInputs.cache
+E:\远伦教育\OneNetcore\Entity\obj\Release\netcoreapp2.1\Entity.AssemblyInfo.cs
+E:\远伦教育\OneNetcore\Entity\obj\Release\netcoreapp2.1\Entity.dll
+E:\远伦教育\OneNetcore\Entity\obj\Release\netcoreapp2.1\Entity.pdb

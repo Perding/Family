@@ -1,0 +1,6 @@
+E:\远伦教育\OneNetcore\WebCore
+--output-path=obj\Release\netcoreapp2.1\
+--application-name=WebCore
+--content-root=E:\远伦教育\OneNetcore\WebCore
+--file=E:\远伦教育\OneNetcore\WebCore\Views\Home\Index.cshtml
+--file=E:\远伦教育\OneNetcore\WebCore\Views\Login\Login.cshtml

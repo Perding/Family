@@ -1,0 +1,154 @@
+
+ 
+记录时间：2018-11-14 01:05:27,385 
+线程ID:[36] 
+日志级别：  ERROR 
+错误描述：OnExceptionInvalid operation. The connection is closed.
+ 
+
+ 
+记录时间：2018-11-14 01:07:15,239 
+线程ID:[25] 
+日志级别：  ERROR 
+错误描述：OnExceptionInvalid operation. The connection is closed.
+ 
+
+ 
+记录时间：2018-11-14 08:52:44,462 
+线程ID:[20] 
+日志级别：  ERROR 
+错误描述：IstrueBeginExecuteNonQuery requires the command to have a transaction when the connection assigned to the command is in a pending local transaction.  The Transaction property of the command has not been initialized.
+ 
+
+ 
+记录时间：2018-11-14 09:02:25,855 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：Istrue关键字 'drop' 附近有语法错误。
+ 
+
+ 
+记录时间：2018-11-14 09:09:34,986 
+线程ID:[4] 
+日志级别：  ERROR 
+错误描述：Istrue关键字 'Drop' 附近有语法错误。
+ 
+
+ 
+记录时间：2018-11-14 09:16:56,559 
+线程ID:[23] 
+日志级别：  ERROR 
+错误描述：Istrue列名 'Card' 无效。
+ 
+
+ 
+记录时间：2018-11-14 09:20:53,093 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：Istrue列名 'Card' 无效。
+ 
+
+ 
+记录时间：2018-11-14 09:20:53,247 
+线程ID:[16] 
+日志级别：  ERROR 
+错误描述：IstrueINSERT 语句中列的数目小于 VALUES 子句中指定的值的数目。VALUES 子句中值的数目必须与 INSERT 语句中指定的列的数目匹配。
+ 
+
+ 
+记录时间：2018-11-14 09:25:00,474 
+线程ID:[23] 
+日志级别：  ERROR 
+错误描述：Istrue列名 'Card' 无效。
+ 
+
+ 
+记录时间：2018-11-14 09:25:00,627 
+线程ID:[29] 
+日志级别：  ERROR 
+错误描述：Istrue在 SET 子句中多次指定了列名 'ShouldPay'。在同一 SET 子句中不得为一个列分配多个值。请修改 SET 子句，以确保一个列仅更新一次。如果 SET 子句更新了某视图的多列，那么列名 'ShouldPay' 可能会在该视图定义中出现两次。
+ 
+
+ 
+记录时间：2018-11-14 09:29:29,604 
+线程ID:[14] 
+日志级别：  ERROR 
+错误描述：Istrue列名 'Card' 无效。
+ 
+
+ 
+记录时间：2018-11-14 09:30:16,208 
+线程ID:[17] 
+日志级别：  ERROR 
+错误描述：Istrue在 SET 子句中多次指定了列名 'ShouldPay'。在同一 SET 子句中不得为一个列分配多个值。请修改 SET 子句，以确保一个列仅更新一次。如果 SET 子句更新了某视图的多列，那么列名 'ShouldPay' 可能会在该视图定义中出现两次。
+ 
+
+ 
+记录时间：2018-11-14 09:30:22,251 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：Istrue列名 'Card' 无效。
+ 
+
+ 
+记录时间：2018-11-14 09:38:13,480 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：Istrue列名 'Card' 无效。
+ 
+
+ 
+记录时间：2018-11-14 09:39:02,792 
+线程ID:[21] 
+日志级别：  ERROR 
+错误描述：Istrue列名 'Card' 无效。
+ 
+
+ 
+记录时间：2018-11-14 09:54:44,055 
+线程ID:[16] 
+日志级别：  ERROR 
+错误描述：Istrue列名 'Card' 无效。
+ 
+
+ 
+记录时间：2018-11-14 10:39:13,718 
+线程ID:[49] 
+日志级别：  ERROR 
+错误描述：OnExceptionAn item with the same key has already been added. Key: insert into AStudentPayes(id,StudentPayID,CollectionInfo,CollentPartenID,ShouldPay,Discount,Paid,F_CreatorTime,F_CreatorUserId)values(@id,@StudentPayID,@CollectionInfo,@CollentPartenID,@ShouldPay,@Discount,@Paid,@F_CreatorTime,@F_CreatorUserId)
+ 
+
+ 
+记录时间：2018-11-14 10:44:23,287 
+线程ID:[22] 
+日志级别：  ERROR 
+错误描述：OnExceptionAn item with the same key has already been added. Key: insert into AStudentPayes(id,StudentPayID,CollectionInfo,CollentPartenID,ShouldPay,Discount,Paid,F_CreatorTime,F_CreatorUserId)values(@id,@StudentPayID,@CollectionInfo,@CollentPartenID,@ShouldPay,@Discount,@Paid,@F_CreatorTime,@F_CreatorUserId)
+ 
+
+ 
+记录时间：2018-11-14 10:46:44,054 
+线程ID:[22] 
+日志级别：  ERROR 
+错误描述：OnExceptionAn item with the same key has already been added. Key: insert into AStudentPayes(id,StudentPayID,CollectionInfo,CollentPartenID,ShouldPay,Discount,Paid,F_CreatorTime,F_CreatorUserId)values(@id,@StudentPayID,@CollectionInfo,@CollentPartenID,@ShouldPay,@Discount,@Paid,@F_CreatorTime,@F_CreatorUserId)
+ 
+
+ 
+记录时间：2018-11-14 11:00:09,340 
+线程ID:[16] 
+日志级别：  ERROR 
+错误描述：OnExceptionAn item with the same key has already been added. Key: insert into AStudentPayes(id,StudentPayID,CollectionInfo,CollentPartenID,ShouldPay,Discount,Paid,F_CreatorTime,F_CreatorUserId)values(@id,@StudentPayID,@CollectionInfo,@CollentPartenID,@ShouldPay,@Discount,@Paid,@F_CreatorTime,@F_CreatorUserId)
+ 
+
+ 
+记录时间：2018-11-14 16:45:25,557 
+线程ID:[15] 
+日志级别：  ERROR 
+错误描述：IstrueSqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM.
+ 
+
+ 
+记录时间：2018-11-14 16:46:26,383 
+线程ID:[3] 
+日志级别：  ERROR 
+错误描述：IstrueSqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM.
+ 

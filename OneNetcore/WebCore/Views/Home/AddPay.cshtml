@@ -1,0 +1,668 @@
+﻿@model Entity.AStudent
+@{
+    Layout = null;
+    IList<Entity.F_ItemDetail> zs = ViewBag.zs as IList<Entity.F_ItemDetail>;
+    IList<Entity.F_ItemDetail> nj = ViewBag.nj as IList<Entity.F_ItemDetail>;
+    IList<Entity.F_ItemDetail> xx = ViewBag.xx as IList<Entity.F_ItemDetail>;
+    IList<Entity.F_ItemDetail> fk = ViewBag.fk as IList<Entity.F_ItemDetail>;
+    IList<Entity.F_ItemDetail> sk = ViewBag.sk as IList<Entity.F_ItemDetail>;
+    IList<Entity.Sys_Item> all = ViewBag.all as IList<Entity.Sys_Item>;
+    IList<Entity.Sys_Item> xf = ViewBag.xf as IList<Entity.Sys_Item>;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddPay</title>
+    <link href="~/Jscript/layui/css/layui.css" rel="stylesheet" />
+    <link href="~/Css/framework-font.css" rel="stylesheet" />
+    <script src="~/Jscript/jquery-1.10.2.min.js"></script>
+    <script src="~/Jscript/layui/layui.js"></script>
+    <script src="~/Jscript/jquery.form.js"></script>
+    <style>
+        table tr {
+            height: 45px;
+        }
+        .form-button {
+            padding: 0px;
+            height: 40px;
+            line-height: 36px;
+            text-align: right;
+            border-top: 1px solid #ddd;
+            background-color: #eee;
+            position: absolute;
+            top: 100%;
+            margin-top: -40px;
+            width: 100%;
+            padding-right: 6px;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -khtml-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+<body style=" overflow-x:hidden; overflow-y:hidden">
+    <form class="layui-form">
+        <input type="hidden" value="@(Model!=null?Model.Owers!=null?Model.Owers.ID:"":"")" id="ID" name="ID" />
+        <div style="width:100%; overflow-y:auto; overflow-x:hidden" class="body">
+            <blockquote class="layui-elem-quote">基本信息</blockquote>
+            <table style="width:100%;">
+				<tr>
+
+					<td align="right" width="15%">身份证：</td>
+					<td align="left" width="35%" class="formValue">
+						<input type="text" name="Card" id="Card" class="layui-input formValue required" value="@(Model != null ? Model.Cards : "")" lay-verify="required" style="width:90%;" />
+					</td>
+					<td align="right" width="15%">姓名：</td>
+					<td align="left" width="35%" class="formValue">
+						<input type="text" name="Name" id="Name" class="layui-input formValue required" value="@(Model != null ? Model.Name : "")" lay-verify="required" style="width:90%;" />
+					</td>
+				</tr>
+                <tr>
+                    <td align="right" width="15%">联系方式：</td>
+                    <td align="left" width="35%" class="formValue">
+                        <input type="text" name="PhoneNum" id="PhoneNum" class="layui-input formValue required" value="@(Model != null ? Model.PhoneNum : "")" style="width:90%;" />
+                    </td>
+                    <td align="right" width="15%">招生老师：</td>
+                    <td align="left" width="20%" class="formValue">
+                        <div class="layui-input-block" style="width:50%; margin-left:0px;">
+                            <select name="TeacherID" id="TeacherID" tta="0CF05878-8AA2-40C1-BAC6-32B81E3F31E5" class="formValue" lay-search>
+                                <option value=""></option>
+                                @if (zs != null)
+                                {
+                                    foreach (var item in zs)
+                                    {
+                                        @if (Model != null)
+                                        {
+                                            if (Model.TeacherID == item.F_ID)
+                                            {
+                                                <option value="@item.F_ID" selected>@item.F_ItemName</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.F_ID">@item.F_ItemName</option>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.F_ID">@item.F_ItemName</option>
+                                        }
+
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" width="5%">年级：</td>
+                    <td align="left" width="10%" class="formValue">
+                        <div class="layui-input-block" style="width:50%; margin-left:0px;">
+                            <select name="GradeID" id="GradeID" tta="B3FF1DDC-1BBC-4911-ACDC-19BABD4EEF49" class="formValue" lay-search>
+                                <option value=""></option>
+                                @if (nj != null)
+                                {
+                                    foreach (var item in nj)
+                                    {
+                                        @if (Model != null)
+                                        {
+                                            if (Model.GradeID == item.F_ID)
+                                            {
+                                                <option value="@item.F_ID" selected>@item.F_ItemName</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.F_ID">@item.F_ItemName</option>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.F_ID">@item.F_ItemName</option>
+                                        }
+
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </td>
+                    <td align="right" width="5%">学校：</td>
+                    <td align="left" width="10%" class="formValue">
+                        <div class="layui-input-block" style="width:50%; margin-left:0px;">
+                            <select name="SchoolID" id="SchoolID" tta="026C846D-2CAC-44F7-B046-A272517D86F4" class="formValue" lay-search>
+                                <option value=""></option>
+                                @if (xx != null)
+                                {
+                                    foreach (var item in xx)
+                                    {
+                                        if (Model != null)
+                                        {
+                                            if (Model.SchoolID == item.F_ID)
+                                            {
+                                                <option value="@item.F_ID" selected>@item.F_ItemName</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.F_ID">@item.F_ItemName</option>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.F_ID">@item.F_ItemName</option>
+                                        }
+
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+
+            <blockquote class="layui-elem-quote">缴费情况</blockquote>
+
+            <table style="width:100%;">
+                <tr>
+                    <td align="right" width="8%">付款账户：</td>
+                    <td align="left" width="10%" class="formValue">
+                        <div class="layui-input-block" style="width:100%; margin-left:0px;">
+                            <select name="PaymentID" id="PaymentID" class="formValue" lay-search>
+                                <option value=""></option>
+                                @if (fk != null)
+                                {
+                                    foreach (var item in fk)
+                                    {
+                                        if (Model != null)
+                                        {
+                                            @if (Model.Owers != null)
+                                            {
+                                                if (Model.Owers.PaymentID == item.F_ID)
+                                                {
+                                                    <option value="@item.F_ID" selected>@item.F_ItemName</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.F_ID">@item.F_ItemName</option>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.F_ID">@item.F_ItemName</option>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.F_ID">@item.F_ItemName</option>
+                                        }
+
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </td>
+                    <td align="right" width="8%">收款账户：</td>
+                    <td align="left" width="10%" class="formValue">
+                        <div class="layui-input-block" style="width:100%; margin-left:0px;">
+                            <select name="CollectionID" id="CollectionID" lay-search>
+                                <option value=""></option>
+                                @if (sk != null)
+                                {
+                                    foreach (var item in sk)
+                                    {
+                                        if (Model != null)
+                                        {
+                                            @if (Model.Owers.CollectionID != null)
+                                            {
+                                                if (Model.Owers.CollectionID == item.F_ID)
+                                                {
+                                                    <option value="@item.F_ID" selected>@item.F_ItemName</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.F_ID">@item.F_ItemName</option>
+                                                }
+
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.F_ID">@item.F_ItemName</option>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.F_ID">@item.F_ItemName</option>
+                                        }
+
+
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </td>
+                    <td align="right" width="8%">缴费时间：</td>
+                    <td align="left" width="10%" class="formValue">
+                        <input type="text" name="PayDate" id="PayDate" class="layui-input formValue required" value="@(Model!=null?Model.Owers!=null?Model.Owers.PayDate.ToString():"":"")" lay-verify="required" style="width:90%;" />
+                    </td>
+                </tr>
+            </table>
+
+            <table class="layui-table tabletu" id="tabletu">
+                <colgroup>
+                    <col width="150">
+                    <col width="150">
+                    <col width="150">
+                    <col width="150">
+                    <col width="150">
+                    <col width="150">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <td>缴费科目</td>
+                        <td>类别</td>
+                        <td>应缴金额</td>
+                        <td>优惠</td>
+                        <td>实缴金额</td>
+
+                        <td>操作</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        if (Model.GetAStudentPayes != null)
+                        {
+                            for (int i = 0; i < Model.GetAStudentPayes.Count(); i++)
+                            {
+                                <tr class="1">
+                                    <td>
+                                        <div class="layui-input-block" style="width:100%; margin-left:0px;">
+                                            <select name="trone" id="trone" lay-filter="trone" class="formValue" lay-search>
+                                                <option value=""></option>
+                                                @if (xf != null)
+                                                {
+                                                    foreach (var item in xf)
+                                                    {
+                                                        if (Model.GetAStudentPayes.ToList()[i].CollentPartenID == item.F_Encode)
+                                                        {
+                                                            <option value="@item.F_ID" selected>@item.F_FullName</option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option value="@item.F_ID">@item.F_FullName</option>
+                                                        }
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-block" style="width:100%; margin-left:0px;">
+                                            <select name="one" id="one" lay-filter="one" class="formValue" lay-search>
+                                                <option value=""></option>
+                                                @if (all != null)
+                                                {
+                                                    foreach (var item in all)
+                                                    {
+                                                        if (Model.GetAStudentPayes.ToList()[i].CollectionInfo == item.F_ID)
+                                                        {
+                                                           
+                                                            <option value="@item.F_ID" selected>@item.F_FullName</option>
+                                                           
+                                                        }
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td id="td">@(Model.GetAStudentPayes.ToList()[i].ShouldPay)</td>
+                                    <td> <input type="text" name="F_ItemName" id="F_ItemName" class="layui-input formValue required" value="@(Model.GetAStudentPayes.ToList()[i].Discount)" style="width:90%;" /></td>
+                                    <td> <input type="text" name="F_ItemName" id="F_ItemName" class="layui-input formValue required" value="@(Model.GetAStudentPayes.ToList()[i].Paid)" lay-verify="required" style="width:90%;" /></td>
+                                    <td><a href="javascript:;"><i class="fa  fa-plus-square-o fa-2x add"></i></a> <a href="javascript:;"><i class="fa  fa-minus-square-o fa-2x delete"></i></a></td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr class="2">
+                                <td>
+                                    <div class="layui-input-block" style="width:100%; margin-left:0px;">
+                                        <select name="trone" id="trone" lay-filter="trone" class="formValue" lay-search>
+                                            <option value=""></option>
+                                            @if (xf != null)
+                                            {
+                                                foreach (var item in xf)
+                                                {
+                                                    <option value="@item.F_ID">@item.F_FullName</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="layui-input-block" style="width:100%; margin-left:0px;">
+                                        <select name="one" id="one" lay-filter="one" class="formValue" lay-search>
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td id="td"></td>
+                                <td> <input type="text" name="F_ItemName" id="F_ItemName" class="layui-input formValue required" value="" style="width:90%;" /></td>
+                                <td> <input type="text" name="F_ItemName" id="F_ItemName" class="layui-input formValue required" value="" lay-verify="required" style="width:90%;" /></td>
+                                <td><a href="javascript:;"><i class="fa  fa-plus-square-o fa-2x add"></i></a> <a href="javascript:;"><i class="fa  fa-minus-square-o fa-2x delete"></i></a></td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr class="3">
+                            <td>
+                                <div class="layui-input-block" style="width:100%; margin-left:0px;">
+                                    <select name="trone" id="trone" lay-filter="trone" class="formValue" lay-search>
+                                        <option value=""></option>
+                                        @if (xf != null)
+                                        {
+                                            foreach (var item in xf)
+                                            {
+                                                <option value="@item.F_ID">@item.F_FullName</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="layui-input-block" style="width:100%; margin-left:0px;">
+                                    <select name="one" id="one" lay-filter="one" class="formValue" lay-search>
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td id="td"></td>
+                            <td> <input type="text" name="F_ItemName" id="F_ItemName" class="layui-input formValue required" value="" style="width:90%;" /></td>
+                            <td> <input type="text" name="F_ItemName" id="F_ItemName" class="layui-input formValue required" value="" lay-verify="required" style="width:90%;" /></td>
+                            <td><a href="javascript:;"><i class="fa  fa-plus-square-o fa-2x add"></i></a> <a href="javascript:;"><i class="fa  fa-minus-square-o fa-2x delete"></i></a></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+            <table style=" width:100%;">
+                <tr>
+                    <td align="right" width="15%">备注：</td>
+                    <td align="left" width="80%" class="formValue">
+                        <textarea name="Note" id="Note" placeholder="请输入内容" class="layui-textarea" style="width:90%;" value="@(Model!=null?Model.Owers!=null?Model.Owers.Note:"":"")">@(Model!=null?Model.Owers!=null?Model.Owers.Note:"":"")</textarea>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="form-button" id="wizard-actions" style=" text-align:center">
+                <input type="button" value="确 定" id="save" class="layui-btn layui-btn-normal  layui-btn-lg cli" lay-submit="" lay-filter="demo1" />
+
+                <input type="button" value="取 消" id="cancel" class="layui-btn layui-btn-normal  layui-btn-lg " />
+            </div>
+
+        </div>
+    </form>
+</body>
+</html>
+<script>
+    var index = parent.layer.getFrameIndex(window.name);
+    $(function () {
+        $(".body").height($(window).height() - 40)
+        $("#PayDate").val(getNowFormatDate());
+
+        layui.use(['form', 'layer', 'laydate'], function () {
+            var form = layui.form, layer = layui.layer, laydate = layui.laydate;
+            $("#cancel").click(function () {
+                parent.layer.close(index);
+			})
+			$("#Card").bind("input propertychange", function (event) {
+				$.post("/Home/Card", { card: $("#Card").val() }, function (da) { 
+					if (da.state == "ok") {
+					
+						$("#Name").val(da.message.name);
+					
+						$("#PhoneNum").val(da.message.phoneNum);
+						var tid = $("#TeacherID").attr("tta");
+						var data = Getrend(tid, da.message.teacherID);
+						$("#TeacherID").find("option").remove();
+						$("#TeacherID").append(data);
+						var tid = $("#GradeID").attr("tta");
+						var data = Getrend(tid, da.message.gradeID);
+						$("#GradeID").find("option").remove();
+						$("#GradeID").append(data);
+						var tid = $("#SchoolID").attr("tta");
+						var data = Getrend(tid, da.message.schoolID);
+						$("#SchoolID").find("option").remove();
+						$("#SchoolID").append(data);
+						form.render('select');
+					}
+				})
+			});
+            form.on('select(trone)', function (data) {
+                var data = Getdata(data.value);
+                $("#one").find("option").remove();
+                $("#one").append(data);
+                form.render('select');
+            });
+            form.on('select(trone1)', function (data) {
+                var data = Getdata(data.value);
+                $("#one1").find("option").remove();
+                $("#one1").append(data);
+                form.render('select');
+            });
+            form.on('select(trone2)', function (data) {
+                var data = Getdata(data.value);
+                $("#one2").find("option").remove();
+                $("#one2").append(data);
+                form.render('select');
+            });
+            form.on('select(one)', function (data) {
+                $.post("/Home/GetSysItemModel", { id: data.value }, function (msg) {
+                    $("#td").html(msg.f_Pay);
+                })
+            });
+            form.on('select(one1)', function (data) {
+                $.post("/Home/GetSysItemModel", { id: data.value }, function (msg) {
+                    $("#td1").html(msg.f_Pay);
+                })
+            });
+            form.on('select(one2)', function (data) {
+                $.post("/Home/GetSysItemModel", { id: data.value }, function (msg) {
+                    $("#td2").html(msg.f_Pay);
+                })
+            });
+            laydate.render({
+                elem: '#PayDate' //指定元素
+            });
+            $("body").on("click", ".add", function () {
+                var id = 'A88107CA-F816-44EC-AD05-0166A42B32EE';
+                var len = $(".tabletu tbody").find("tr").length;
+                if (len < 3) {
+                    var html = '<tr>';
+                    html += '<td><div class="layui-input-block" style="width:100%; margin-left:0px;">';
+                    html += '<select name="trone"  lay-filter="trone' + len + '" class="formValue" lay-search>';
+                    html += Getdata(id)
+                    html += ' </select> </div>';
+                    html += '</td>';
+                    html += '<td><div class="layui-input-block" style="width:100%; margin-left:0px;">';
+                    html += '<select name="trone" id="one' + len + '" lay-filter="one' + len + '" class="formValue" lay-search>';
+
+                    html += ' </select> </div>';
+                    html += '</td>';
+                    html += '<td id="td' + len + '"></td>';
+                    html += '<td><input type="text" name="F_ItemName" id="F_ItemName" class="layui-input formValue required" value=""  style="width:90%;" /></td>';
+                    html += '<td><input type="text" name="F_ItemName" id="F_ItemName" class="layui-input formValue required" value="" lay-verify="required" value="" style="width:90%;" /></td>';
+
+                    html += '<td><a href="javascript:;"><i class="fa  fa-plus-square-o fa-2x add"></i></a> <a href="javascript:;"><i class="fa  fa-minus-square-o fa-2x delete"></i></a></td>';
+                    html += '</tr>';
+                    $(".tabletu tbody").append(html);
+                    form.render();
+                }
+            })
+            $("body").on("click", ".delete", function () {
+                var len = $("#tabletu tbody").find("tr").length;
+                if (len > 1) {
+                    $(this).parent().parent().parent().remove();
+                }
+            })
+
+
+
+            $("#save").click(function () {
+                var len = $("#tabletu tbody").find("tr").length;
+                var id = $.trim($("#ID").val());
+                var name = $.trim($("#Name").val())
+                var card = $.trim($("#Card").val())
+                if (name == "") {
+                    layer.msg("姓名不能为空");
+                    return false;
+                }
+                if (card == "") {
+                    layer.msg("身份证不能为空");
+                    return false;
+                }
+                var postdata = {};
+                postdata["Name"] = name;
+                postdata["Cards"] = card;
+                postdata["ID"] = id;
+                postdata["PhoneNum"] = $.trim($("#PhoneNum").val());
+                postdata["TeacherID"] = $.trim($("#TeacherID").val());
+                postdata["GradeID"] = $.trim($("#GradeID").val());
+                postdata["SchoolID"] = $.trim($("#SchoolID").val());
+                postdata["PaymentID"] = $.trim($("#PaymentID").val());
+                postdata["CollectionID"] = $.trim($("#CollectionID").val());
+                postdata["PayDate"] = $.trim($("#PayDate").val());
+                postdata["PayDate"] = $.trim($("#PayDate").val());
+                postdata["Note"] = $.trim($("#Note").val());
+                var str = '';
+                var con = 0;
+                $("#tabletu tbody").find("tr").each(function (e) {
+                    var td1 = $(this).children("td").eq(0).find("select").val();
+                    var td2 = $(this).children("td").eq(1).find("select").val();
+                    var td3 = $(this).children("td").eq(2).html();
+                    var td4 = $(this).children("td").eq(3).find("input").val();
+                    var td5 = $(this).children("td").eq(4).find("input").val();
+                    if (td1 == "" || td2 == "" || td5 == "") {
+                        con += 1;
+                        return false;
+                    }
+                    str += td1 + ',' + td2 + ',' + td3 + ',' + td4 + ',' + td5 + "|";
+                })
+                if (con > 0) {
+                    layer.msg("请先完善信息");
+                    return false;
+                }
+                postdata["html"] = str;
+               
+                $.ajax({
+                    url: '/Enter/GetSaveEnterStudent',
+                    type: "post",
+                    data: postdata,
+                    beforeSend: function () {
+                        $("#save").attr('disabled', 'disabled').val("保存中...");
+                        i = ityzl_SHOW_LOAD_LAYER();
+                    },
+                    success: function (data) {
+                        layer.close(i);
+                        if (data.status == "ok") {
+                            
+                            if (data.message == "") {
+								layer.msg("修改成功", { time: 1000 }, function () {
+									window.parent.UpdateData();
+                                    parent.layer.close(index);
+                                });
+                            }
+                            else {
+                                window.parent.Dayin(data.message);
+                                parent.layer.close(index);
+                            }
+
+                        }
+                        else {
+                            layer.msg(data.message);
+                            $("#save").removeAttr('disabled').val("确定");
+                        }
+                    },
+                    error: function () {
+                        $("#save").removeAttr('disabled').val("确定");
+                        layer.msg('保存失败！');
+                    }
+                })
+            })
+        })
+    })
+    function ityzl_SHOW_LOAD_LAYER() {
+        return layer.msg('正在保存中...', { icon: 16, shade: [0.5, '#f5f5f5'], scrollbar: false, time: 0 });
+	}
+	function Getrend(id, tta) {
+		console.log(id+"--"+tta);
+		var data1 = ' <option value=""></option>';
+		$.ajax({
+			url: '/Home/GetF_item',
+			type: "post",
+			data: { id: id },
+			async: false,
+			success: function (data) {
+				if (data.length > 0) {
+
+					for (var i = 0; i < data.length; i++) {
+						if (data[i].f_ID ==tta) {
+							data1 += '<option value="' + data[i].f_ID + '" selected>' + data[i].f_ItemName + '</option>';
+						}
+						else {
+							data1 += '<option value="' + data[i].f_ID + '">' + data[i].f_ItemName + '</option>';
+						}
+						
+					}
+				}
+			},
+			error: function () {
+				layer.msg('读取数据失败！');
+			}
+		});
+
+		// <option value="key5">预交</option>
+		return data1;
+	}
+    function Getdata(id) {
+        var data1 = ' <option value=""></option>';
+        $.ajax({
+            url: '/Home/GetSysItem',
+            type: "post",
+            data: { id: id },
+            async: false,
+            success: function (data) {
+                if (data.length > 0) {
+
+                    for (var i = 0; i < data.length; i++) {
+                        data1 += '<option value="' + data[i].f_ID + '">' + data[i].f_FullName + '</option>';
+                    }
+                }
+            },
+            error: function () {
+                layer.msg('读取数据失败！');
+            }
+        });
+
+        // <option value="key5">预交</option>
+        return data1;
+    }
+    function getNowFormatDate() {
+        var date = new Date();
+        var seperator1 = "-";
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        var currentdate = year + seperator1 + month + seperator1 + strDate;
+        return currentdate;
+    }
+</script>

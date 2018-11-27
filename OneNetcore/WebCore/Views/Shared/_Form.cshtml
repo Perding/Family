@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_Form</title>
+    <link href="~/Jscript/layui/css/layui.css" rel="stylesheet" />
+    <link href="~/Jscript/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Css/framework-font.css" rel="stylesheet" />
+    <script src="~/Jscript/jquery-1.10.2.min.js"></script>
+    <script src="~/Jscript/layui/layui.js"></script>
+    <script src="~/Jscript/jquery.form.js"></script>
+    <style>
+        table tr {
+            height: 45px;
+        }
+            table tr td {
+            text-align:center
+            }
+            .form-button {
+                padding: 0px;
+                height: 40px;
+                line-height: 36px;
+                text-align: right;
+                border-top: 1px solid #ddd;
+                background-color: #eee;
+                position: absolute;
+                top: 100%;
+                margin-top: -40px;
+                width: 100%;
+                padding-right: 6px;
+                -moz-user-select: none;
+                -webkit-user-select: none;
+                -ms-user-select: none;
+                -khtml-user-select: none;
+                user-select: none;
+            }
+    </style>
+</head>
+<body style="overflow-y:hidden;overflow-x:hidden">
+    <div>
+        @RenderBody()
+
+    </div>
+</body>
+</html>
+<script>
+    function ityzl_SHOW_LOAD_LAYER() {
+        return layer.msg('正在保存中...', { icon: 16, shade: [0.5, '#f5f5f5'], scrollbar: false, time: 0 });
+    }
+</script>

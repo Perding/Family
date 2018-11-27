@@ -1,0 +1,115 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>User</title>
+    <link href="~/Jscript/layui/css/layui.css" rel="stylesheet" />
+   
+    <script src="~/Jscript/jquery-1.10.2.min.js"></script>
+  
+    <script src="~/Jscript/layui/layui.js"></script>
+</head>
+<body>
+    <form class="layui-form">
+        <table id="demo" lay-filter="demo" style="width:100%; "></table>
+    </form>
+    <script type="text/html" id="toolbarDemo">
+        <div class="layui-btn-container">
+            <input type="button" class="layui-btn layui-btn-sm add" value="新增" lay-event="getCheckData" />
+        </div>
+    </script>
+    <script type="text/html" id="switchTpl">
+        <!-- 这里的 checked 的状态只是演示 -->
+        <input type="checkbox" name="sex" value="{{d.u_isEnable}}" lay-skin="switch" lay-text="有效|无效" lay-filter="sexDemo" {{ d.u_isEnable == 1 ? 'checked' : '' }} disabled>
+    </script>
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+</body>
+</html>
+<script>
+    $(function () {
+        layui.use(['laypage', 'form', 'layer', 'table'], function () {
+            var laypage = layui.laypage, form = layui.form, layer = layui.layer, table = layui.table;
+            table.render({
+                elem: "#demo",
+                id: "tabReload1",
+                url: "/System/GetListUser",
+                toolbar: '#toolbarDemo',
+                method: "post",
+                page: false,
+                width: window.innerWidth,
+                height: 'full-300',
+                loading: true,
+                text: {
+                    none: '暂无相关数据'
+                },
+                cols: [[
+                    { type: 'numbers' }
+                    , { field: 'u_account', align: 'center', width: 150, title: '登录账号' }
+                    , { field: 'u_realName', align: 'center', width: 150, title: '姓名' }
+                    , { field: 'u_IP', align: 'center', width: 150, title: 'IP地址' }
+                    , { field: 'u_phone', align: 'center', width: 150, title: '联系方式' }
+                    , { field: 'u_isEnable', align: 'center', templet: '#switchTpl', width: 150, title: '是否有效' }
+                    , { field: 'U_CreatorTimes', align: 'center', width: 150, title: '创建时间' }
+                    , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 'auto' }
+                ]]
+            })
+            table.on('tool(demo)', function (obj) {
+                var data = obj.data;
+                //console.log(obj)
+                if (obj.event === 'del') {
+                    layer.confirm('是否确定删除' + data.u_account + '账号', function (index) {
+                        $.post("/System/DeleteUser", { id: data.u_userid }, function (msg) {
+                            window.location.reload();
+                        })
+                        layer.close(index);
+                    });
+
+                } else if (obj.event === 'edit') {
+                    layer.open({
+                        id: "local",
+                        type: 2,
+                        title: "修改",
+                        area: ['650px', '550px'], //宽高
+                        content: "/System/AddUser?uid=" + data.u_userid,
+                        success: function (layero, index) {
+
+                        }
+                    });
+                }
+            });
+            table.on('toolbar(demo)', function (obj) {
+                switch (obj.event) {
+                    case 'getCheckData':
+                        layer.open({
+                            id: "local",
+                            type: 2,
+                            title: "添加",
+                            area: ['650px', '550px'], //宽高
+                            content: "/System/AddUser",
+                            success: function (layero, index) {
+
+                            }
+                        });
+                        break;
+                };
+            });
+
+
+        })
+
+    })
+
+    function reld()
+    {
+        window.location.reload();
+     }
+</script>

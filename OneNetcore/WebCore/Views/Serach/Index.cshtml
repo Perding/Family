@@ -1,0 +1,357 @@
+﻿
+@{
+    Layout = null;
+    IList<Entity.F_ItemDetail> zs = ViewBag.zs as IList<Entity.F_ItemDetail>;
+    IList<Entity.F_ItemDetail> nj = ViewBag.nj as IList<Entity.F_ItemDetail>;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Jscript/layui/css/layui.css" rel="stylesheet" />
+    <link href="~/Jscript/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Css/framework-font.css" rel="stylesheet" />
+    <script src="~/Jscript/jquery-1.10.2.min.js"></script>
+    <script src="~/Jscript/layui/layui.js"></script>
+    <script type="text/javascript" src="https://cdn.polyfill.io/v2/polyfill.min.js?features=es6"></script>
+    <style>
+        table tr {
+            height: 45px;
+        }
+
+            table tr td {
+                text-align: center
+            }
+
+        .cor {
+            background-color: #ddd
+        }
+    </style>
+</head>
+<body style=" overflow-x:hidden; overflow-y:hidden">
+    <form class="layui-form">
+        <div class="heider" style="width:100%;height:40px;margin-top:10px;margin-left:20px;">
+
+            <div style="float:left; width:100%">
+
+                <div class="layui-input-inline" style="width: 70px;text-align: right;">
+                    查询范围：
+                </div>
+                <div class="layui-input-inline" style="width: 100px;">
+                    <input type="text" name="price_min" placeholder="" autocomplete="off" class="layui-input " id="datestart">
+                </div>
+                <div class="layui-input-inline" style="width: 10px;">
+                    到
+                </div>
+                <div class="layui-input-inline" style="width: 100px;">
+                    <input type="text" name="price_max" placeholder="" autocomplete="off" class="layui-input" id="dateend">
+                </div>
+                <div class="layui-input-inline" style="width: 60px;text-align: right;">
+                    年级：
+                </div>
+                <div class="layui-input-inline" style="width: 100px;">
+                    <select name="GradeID" id="GradeID" class="formValue" lay-search>
+                        <option value=""></option>
+                        @if (nj != null)
+            {
+                foreach (var item in nj)
+                {
+                    <option value="@item.F_ID">@item.F_ItemName</option>
+    }
+}
+                    </select>
+                </div>
+                <div class="layui-input-inline" style="width: 70px;text-align: right;">
+                    招生老师：
+                </div>
+                <div class="layui-input-inline" style="width: 100px;">
+                    <select name="TeacherID" id="TeacherID" class="formValue" lay-search>
+                        <option value=""></option>
+                        @if (zs != null)
+            {
+                foreach (var item in zs)
+                {
+                    <option value="@item.F_ID">@item.F_ItemName</option>
+    }
+}
+                    </select>
+                </div>
+                <div class="layui-input-inline" style="width: 200px;">
+                    <input type="text" id="name" class="layui-input" placeholder="输入姓名查询" style="width:100%;display: inline-table;">
+
+                </div>
+                <input type="button" value="查询" class="layui-btn layui-btn-normal serch" />
+
+                <input type="button" value="导出" class="layui-btn layui-btn-normal daoru" />
+              
+            </div>
+
+        </div>
+        <div style="width:100%; overflow-y:auto; overflow-x:hidden" class="body">
+            <table id="demo" style="width:99%;" class="layui-table">
+                <thead>
+                    <tr>
+                        <td style="width:20px;"></td>
+                        <td style="width:25px;">学号</td>
+                        <td style="width:50px;">姓名</td>
+                        <td style="width:50px;">身份证</td>
+                        <td style="width:60px;">应缴金额<br />（单位：元）</td>
+                        <td style="width:60px;">优惠金额<br />（单位：元）</td>
+                        <td style="width:60px;">实缴金额<br />（单位：元）</td>
+                        <td style="width:60px;">欠费金额<br />（单位：元）</td>
+                        <td style="width:50px;">招生老师</td>
+                        <td style="width:40px;">年级</td>
+                        <td style="width:30px;">联系方式</td>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div style="width:100%; text-align:center">
+            <div id="demo1" style="text-align:center"></div>
+        </div>
+    </form>
+</body>
+</html>
+<script>
+    var index = 0;
+    var limitAllAppoint = 20;
+    var pageIndex = 1;
+    var total = 0;
+    $(function () { 
+
+        layui.use(['form', 'layer', 'laydate'], function () {
+            var form = layui.form, layer = layui.layer, laydate = layui.laydate;
+           
+            GetTable().then(function () { doPage(); }, function (err) { layer.msg(err) });
+            $(".serch").click(function () { 
+                GetTable().then(function () { doPage(); }, function (err) { layer.msg(err) });
+            })
+            laydate.render({
+                elem: '#datestart' //指定元素
+            });
+            laydate.render({
+                elem: '#dateend' //指定元素
+            });
+            $(".daoru").click(function () {
+                var postdata = {};
+                postdata["TimeStart"] = $.trim($("#datestart").val())
+                postdata["TimeEnd"] = $.trim($("#dateend").val())
+                postdata["GradeID"] = $.trim($("#GradeID").val())
+                postdata["TeacherID"] = $.trim($("#TeacherID").val())
+                postdata["name"] = $.trim($("#name").val())
+                postdata["pageIndex"] = pageIndex;
+                postdata["pageSize"] = limitAllAppoint;
+                $.ajax({
+                    url: '/Serach/Seradaoru',
+                    type: "post",
+                    data: postdata,
+                    beforeSend: function () {
+                        index = ityzl_SHOW_LOAD_Dao();
+                    },
+                    success: function (datas) {
+                        layer.close(index);
+                        //window.open(datas.message);
+                        window.location.href = "/Serach/download?path=" + datas.message;
+                    },
+                    error: function (msg) {
+                        layer.msg(msg);
+                        layer.close(index);
+                    }
+                });
+               // window.location.href = "/Serach/Seradaoru?TimeStart=" + $.trim($("#datestart").val()) + "&TimeEnd=" + $.trim($("#dateend").val()) + "&GradeID=" + $.trim($("#GradeID").val()) + "&TeacherID=" + $.trim($("#TeacherID").val()) + "&name=" + $.trim($("#name").val())
+            })
+            $(".body").height($(window).height() - 100);
+            $("body").on("click", ".add", function (event) {
+                event.stopPropagation();
+                var id = $(this).parent().parent().attr("id");
+                //$(this).parent().parent().next().html('<tr class="child_row_01 childrow" style=""><td colspan="11">nihaoklsdfalkdfa</td></tr>');
+                $(this).parent().parent().siblings('.child_' + id).toggle();
+                $(this).parent().html('<i class="fa  fa-minus-square-o fa-2x delete"></i>');
+            })
+            $("body").on("click", ".delete", function (e) {
+                e.stopPropagation();
+                var id = $(this).parent().parent().attr("id");
+                $(this).parent().parent().siblings('.child_' + id).toggle();
+                $(this).parent().html('<i class="fa  fa-plus-square-o fa-2x add"></i>');
+            })
+        })
+    })
+    function GetTable() {
+        return new Promise(function (resolve, reject) { 
+            var postdata = {};
+            postdata["TimeStart"] = $.trim($("#datestart").val())
+            postdata["TimeEnd"] = $.trim($("#dateend").val())
+            postdata["GradeID"] = $.trim($("#GradeID").val())
+            postdata["TeacherID"] = $.trim($("#TeacherID").val())
+            postdata["name"] = $.trim($("#name").val())
+            postdata["pageIndex"] = pageIndex;
+            postdata["pageSize"] = limitAllAppoint;
+            $.ajax({
+                url: '/Serach/Serachluru',
+                type: "post",
+                data: postdata,
+                beforeSend: function () {
+                    index = ityzl_SHOW_LOAD_LAYER();
+                },
+                success: function (datas) {
+                    layer.close(index);
+                    $("#demo tbody").html('');
+                    total = datas.recordCount;
+                    var data = datas.list;
+                    //if (total < limitAllAppoint) {
+                    //    $("#demo1").hide();
+                    //} else {
+                    //    $("#demo1").show();
+                    //}
+                    if (total == 0) {
+                        $("#demo tbody").html('');
+                    }
+                    if (data.length > 0) {
+                        var html = '';
+                        for (var i = 0; i < data.length; i++) {
+                            html += '<tr class="parent trcolor" id="row_0' + i + '" data-name="' + data[i].name + '"  data-payMoeny="' + data[i].payMoeny + '" data-youhui="' + data[i].youhui + '" data-collecMoney="' + data[i].collecMoney + '"  data-id="' + data[i].id + '"   data-cards="' + data[i].cards + '" type="1">';
+
+                            html += '<td style="width:30px;"> <i class="fa  fa-plus-square-o fa-2x add" style="cursor:pointer"></i></td>';
+                            html += '<td>' + data[i].stuNum + '</td>';
+                            html += '<td>' + data[i].name + '</td>';
+                            html += '<td>' + data[i].cards + '</td>';
+                            html += '<td>' + data[i].collecMoney + '</td>';
+                            html += '<td>' + data[i].youhui + '</td>';
+                            html += '<td>' + data[i].payMoeny + '</td>';
+                            html += '<td>' + data[i].qinfeiMoeny + '</td>';
+                            html += '<td>' + data[i].teacherID + '</td>';
+                            html += '<td>' + data[i].gradeID + '</td>';
+
+                            html += '<td>' + data[i].phoneNum + '</td>';
+                            html += '</tr>';
+
+                            if (data[i].getAStudentPay.length > 0) {
+                                html += '<tr class="child_row_0' + i + ' childrow" style="display:none">';
+                                html += '<td colspan="12">';
+                                html += '<table class="layui-table">';
+                                html += '<caption align="top">缴费记录</caption>';
+                                html += '<thead>';
+                                html += '<tr>';
+                                html += '<td rowspan="2" style="width:120px;">缴费日期</td>';
+                                html += '<td rowspan="2" style="width:100px;">付款方式</td>';
+                                html += '<td rowspan="2" style="width:100px;">收款方式</td>';
+                                html += '<td colspan="3" style="width:80px;">学费</td>';
+                                html += '<td colspan="3" style="width:80px;">住宿费</td>';
+                                html += '<td colspan="3" style="width:80px;">文化费</td>';
+                                html += '<td rowspan="2" style="width:100px;">备注</td>';
+                                html += '</tr>';
+                                html += '<tr>'
+                                html += '<td>应收</td>';
+                                html += '<td>优惠</td>';
+                                html += '<td>实收</td>';
+                                html += '<td>应收</td>';
+                                html += '<td>优惠</td>';
+                                html += '<td>实收</td>';
+                                html += '<td>应收</td>';
+                                html += '<td>优惠</td>';
+                                html += '<td>实收</td>';
+                                html += '</tr>';
+                                html += '</thead>';
+                                for (var j = 0; j < data[i].getAStudentPay.length; j++) {
+                                    html += '<tr class="trcolor"  data-name="' + data[i].name + '" data-payMoeny="' + data[i].payMoeny + '" data-youhui="' + data[i].youhui + '" data-collecMoney="' + data[i].collecMoney + '" data-cards="' + data[i].cards + '"  data-id="' + data[i].getAStudentPay[j].id + '" type="2">'
+                                    html += '<td style="width:120px;">' + data[i].getAStudentPay[j].payDateString + '</td>';
+                                    html += '<td style="width:120px;">' + data[i].getAStudentPay[j].paymentID + '</td>';
+                                    html += '<td style="width:120px;">' + data[i].getAStudentPay[j].collectionID + '</td>';
+                                    html += '<td style="width:120px;">' + data[i].getAStudentPay[j].xa + '</td>';
+                                    html += '<td style="width:120px;">' + data[i].getAStudentPay[j].xb + '</td>';
+                                    html += '<td style="width:120px;">' + data[i].getAStudentPay[j].xc + '</td>';
+                                    html += '<td style="width:120px;">' + data[i].getAStudentPay[j].za + '</td>';
+                                    html += '<td style="width:120px;">' + data[i].getAStudentPay[j].zb + '</td>';
+                                    html += '<td style="width:120px;">' + data[i].getAStudentPay[j].zc + '</td>';
+                                    html += '<td style="width:120px;">' + data[i].getAStudentPay[j].wa + '</td>';
+                                    html += '<td style="width:120px;">' + data[i].getAStudentPay[j].wb + '</td>';
+                                    html += '<td style="width:120px;">' + data[i].getAStudentPay[j].wc + '</td>';
+                                    html += '<td style="width:120px;">' + data[i].getAStudentPay[j].note + '</td>';
+                                    html += '</tr>';
+                                }
+
+                                html += '</table>'
+                                html += '</td>';
+                            }
+                            if (data[i].getARefundes.length > 0) {
+                                html += '<tr class="child_row_0' + i + ' childrow" style="display:none">';
+                                html += '<td colspan="12">';
+                                html += '<table class="layui-table">';
+                                html += '<caption align="top">退费记录</caption>';
+                                html += '<thead>';
+                                html += '<tr>';
+                                html += '<td rowspan="2" style="width:120px;">退费日期</td>';
+                                html += '<td colspan="4" style="width:120px;">类别</td>';
+                                html += '<td rowspan="2" style="width:250px;">备注</td>';
+                                html += '</tr>';
+                                html += '<tr>';
+                                html += '<td>学费</td>';
+                                html += '<td>住宿费</td>';
+                                html += '<td>文化费</td>';
+                                html += '<td>退学</td>';
+                                html += '</tr>';
+                                html += '</thead>';
+                                for (var u = 0; u < data[i].getARefundes.length; u++) {
+                                    html += '<tr class="trcolor"  data-name="' + data[i].name + '" data-payMoeny="' + data[i].payMoeny + '" data-youhui="' + data[i].youhui + '" data-collecMoney="' + data[i].collecMoney + '" data-cards="' + data[i].cards + '"  data-id="' + data[i].getARefundes[u].id + '" type="3">'
+                                    html += '<td >' + data[i].getARefundes[u].payDate + '</td>';
+                                    html += '<td >' + data[i].getARefundes[u].xa + '</td>';
+                                    html += '<td >' + data[i].getARefundes[u].za + '</td>';
+                                    html += '<td >' + data[i].getARefundes[u].wa + '</td>';
+                                    html += '<td >' + data[i].getARefundes[u].tx + '</td>';
+                                    html += '<td >' + data[i].getARefundes[u].note + '</td>';
+                                    html += '</tr>';
+                                }
+                                html += '</table>';
+                                html += '</td>';
+                                html += '</tr>';
+                            }
+                            if (data[i].getAStudentPay.length == 0 && data[i].getARefundes.length == 0) {
+                                html += '<tr class="child_row_0' + i + ' childrow" style="display:none">';
+                                html += '<td colspan="12">暂无记录';
+                                html += '</td>';
+                                html += '</tr>';
+                            }
+                            html += '</tr>';
+                        }
+                        $("#demo tbody").append(html);
+                    }
+                    resolve(this);
+                },
+                error: function () {
+                    layer.close(index);
+                    
+                    reject("查询失败");
+                }
+            });
+
+        })
+      
+    }
+    function doPage() {
+        layui.use(['laypage', 'layer'], function () {
+            var laypage = layui.laypage, layer = layui.layer;
+            laypage.render({
+                elem: 'demo1',
+                count: total, //数据总数
+                limit: limitAllAppoint,
+                layout: ['count', 'prev', 'page', 'next', 'skip', 'limits'],
+                jump: function (obj, first) {
+                    pageIndex = obj.curr;
+                    if (!first) {
+                        GetTable();
+                    }
+                }
+            });
+        })
+    }
+    function ityzl_SHOW_LOAD_LAYER() {
+        return layer.msg('正在加载中...', { icon: 16, shade: [0.5, '#f5f5f5'], scrollbar: false, time: 0 });
+    }
+    function ityzl_SHOW_LOAD_Dao() {
+        return layer.msg('正在导出中...', { icon: 16, shade: [0.5, '#f5f5f5'], scrollbar: false, time: 0 });
+    }
+</script>

@@ -1,0 +1,88 @@
+
+ 
+记录时间：2018-11-19 09:44:10,711 
+线程ID:[43] 
+日志级别：  ERROR 
+错误描述：Istrue'%' 附近有语法错误。
+ 
+
+ 
+记录时间：2018-11-19 09:44:10,740 
+线程ID:[43] 
+日志级别：  ERROR 
+错误描述：OnException'%' 附近有语法错误。
+ 
+
+ 
+记录时间：2018-11-19 09:46:55,478 
+线程ID:[16] 
+日志级别：  ERROR 
+错误描述：Istrue'%' 附近有语法错误。
+ 
+
+ 
+记录时间：2018-11-19 09:46:55,495 
+线程ID:[16] 
+日志级别：  ERROR 
+错误描述：OnException'%' 附近有语法错误。
+ 
+
+ 
+记录时间：2018-11-19 09:49:33,963 
+线程ID:[11] 
+日志级别：  ERROR 
+错误描述：Istrue'%' 附近有语法错误。
+ 
+
+ 
+记录时间：2018-11-19 09:49:33,973 
+线程ID:[11] 
+日志级别：  ERROR 
+错误描述：OnException'%' 附近有语法错误。
+ 
+
+ 
+记录时间：2018-11-19 09:52:01,397 
+线程ID:[15] 
+日志级别：  ERROR 
+错误描述：IstrueIndex was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+ 
+
+ 
+记录时间：2018-11-19 09:52:01,404 
+线程ID:[15] 
+日志级别：  ERROR 
+错误描述：OnExceptionIndex was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+ 
+
+ 
+记录时间：2018-11-19 09:52:05,276 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：IstrueIndex was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+ 
+
+ 
+记录时间：2018-11-19 09:52:05,278 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：OnExceptionIndex was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+ 
+
+ 
+记录时间：2018-11-19 20:25:55,819 
+线程ID:[18] 
+日志级别：  ERROR 
+错误描述：Istrue'=' 附近有语法错误。
+ 
+
+ 
+记录时间：2018-11-19 20:53:22,974 
+线程ID:[33] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 

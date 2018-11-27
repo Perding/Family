@@ -1,0 +1,63 @@
+
+ 
+记录时间：2018-11-11 16:37:18,128 
+线程ID:[11] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-11 16:48:13,111 
+线程ID:[11] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-11 16:48:33,258 
+线程ID:[11] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-11 16:49:04,950 
+线程ID:[28] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-11 16:49:50,809 
+线程ID:[11] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-11 22:44:53,044 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-11 22:46:08,337 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+记录时间：2018-11-11 22:46:42,625 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：OnExceptionObject reference not set to an instance of an object.
+ 
+
+ 
+��¼ʱ�䣺2018-11-11 22:49:16,693 
+�߳�ID:[10] 
+��־����  ERROR 
+����������IstrueCannot implicitly convert type 'object' to 'Entity.UserInfo'. An explicit conversion exists (are you missing a cast?)
+ 

@@ -1,0 +1,146 @@
+
+ 
+记录时间：2018-11-17 11:03:09,452 
+线程ID:[25] 
+日志级别：  ERROR 
+错误描述：InsertInput string was not in a correct format.
+ 
+
+ 
+记录时间：2018-11-17 11:04:21,279 
+线程ID:[33] 
+日志级别：  ERROR 
+错误描述：InsertInput string was not in a correct format.
+ 
+
+ 
+记录时间：2018-11-17 12:54:33,759 
+线程ID:[20] 
+日志级别：  ERROR 
+错误描述：OnException列名 'note' 无效。
+ 
+
+ 
+记录时间：2018-11-17 12:54:39,651 
+线程ID:[20] 
+日志级别：  ERROR 
+错误描述：OnException列名 'note' 无效。
+ 
+
+ 
+记录时间：2018-11-17 12:54:43,744 
+线程ID:[26] 
+日志级别：  ERROR 
+错误描述：OnException列名 'note' 无效。
+ 
+
+ 
+记录时间：2018-11-17 14:41:12,130 
+线程ID:[17] 
+日志级别：  ERROR 
+错误描述：Istrue关键字 'values' 附近有语法错误。
+ 
+
+ 
+记录时间：2018-11-17 14:49:08,044 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：Istrue关键字 'values' 附近有语法错误。
+ 
+
+ 
+记录时间：2018-11-17 17:57:57,569 
+线程ID:[11] 
+日志级别：  ERROR 
+错误描述：OnExceptionAn error occurred during the activation of a particular registration. See the inner exception for details. Registration: Activator = AStudentService (ReflectionActivator), Services = [Service.IService.AStudentIService], Lifetime = Autofac.Core.Lifetime.CurrentScopeLifetime, Sharing = None, Ownership = OwnedByLifetimeScope ---> An error occurred during the activation of a particular registration. See the inner exception for details. Registration: Activator = AStudentRepository (ReflectionActivator), Services = [Repository.IReposotiry.IAStudentRepository], Lifetime = Autofac.Core.Lifetime.CurrentScopeLifetime, Sharing = None, Ownership = OwnedByLifetimeScope ---> None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'Repository.Reposotiry.AStudentRepository' can be invoked with the available services and parameters:
+Cannot resolve parameter 'Repository.Reposotiry.AStudentPayesRepository aStudentPayesRepository' of constructor 'Void .ctor(Microsoft.Extensions.Configuration.IConfiguration, Repository.Reposotiry.AStudentPayesRepository)'. (See inner exception for details.) (See inner exception for details.)
+ 
+
+ 
+记录时间：2018-11-17 17:58:01,460 
+线程ID:[12] 
+日志级别：  ERROR 
+错误描述：OnExceptionAn error occurred during the activation of a particular registration. See the inner exception for details. Registration: Activator = AStudentService (ReflectionActivator), Services = [Service.IService.AStudentIService], Lifetime = Autofac.Core.Lifetime.CurrentScopeLifetime, Sharing = None, Ownership = OwnedByLifetimeScope ---> An error occurred during the activation of a particular registration. See the inner exception for details. Registration: Activator = AStudentRepository (ReflectionActivator), Services = [Repository.IReposotiry.IAStudentRepository], Lifetime = Autofac.Core.Lifetime.CurrentScopeLifetime, Sharing = None, Ownership = OwnedByLifetimeScope ---> None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'Repository.Reposotiry.AStudentRepository' can be invoked with the available services and parameters:
+Cannot resolve parameter 'Repository.Reposotiry.AStudentPayesRepository aStudentPayesRepository' of constructor 'Void .ctor(Microsoft.Extensions.Configuration.IConfiguration, Repository.Reposotiry.AStudentPayesRepository)'. (See inner exception for details.) (See inner exception for details.)
+ 
+
+ 
+记录时间：2018-11-17 17:58:49,927 
+线程ID:[22] 
+日志级别：  ERROR 
+错误描述：OnExceptionAn error occurred during the activation of a particular registration. See the inner exception for details. Registration: Activator = AStudentService (ReflectionActivator), Services = [Service.IService.AStudentIService], Lifetime = Autofac.Core.Lifetime.CurrentScopeLifetime, Sharing = None, Ownership = OwnedByLifetimeScope ---> An error occurred during the activation of a particular registration. See the inner exception for details. Registration: Activator = AStudentRepository (ReflectionActivator), Services = [Repository.IReposotiry.IAStudentRepository], Lifetime = Autofac.Core.Lifetime.CurrentScopeLifetime, Sharing = None, Ownership = OwnedByLifetimeScope ---> None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'Repository.Reposotiry.AStudentRepository' can be invoked with the available services and parameters:
+Cannot resolve parameter 'Repository.Reposotiry.AStudentPayesRepository aStudentPayesRepository' of constructor 'Void .ctor(Microsoft.Extensions.Configuration.IConfiguration, Repository.Reposotiry.AStudentPayesRepository)'. (See inner exception for details.) (See inner exception for details.)
+ 
+
+ 
+记录时间：2018-11-17 18:00:15,871 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：OnExceptionAn error occurred during the activation of a particular registration. See the inner exception for details. Registration: Activator = AStudentService (ReflectionActivator), Services = [Service.IService.AStudentIService], Lifetime = Autofac.Core.Lifetime.CurrentScopeLifetime, Sharing = None, Ownership = OwnedByLifetimeScope ---> An error occurred during the activation of a particular registration. See the inner exception for details. Registration: Activator = AStudentRepository (ReflectionActivator), Services = [Repository.IReposotiry.IAStudentRepository], Lifetime = Autofac.Core.Lifetime.CurrentScopeLifetime, Sharing = None, Ownership = OwnedByLifetimeScope ---> None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'Repository.Reposotiry.AStudentRepository' can be invoked with the available services and parameters:
+Cannot resolve parameter 'Repository.Reposotiry.AStudentPayesRepository aStudentPayesRepository' of constructor 'Void .ctor(Microsoft.Extensions.Configuration.IConfiguration, Repository.Reposotiry.AStudentPayesRepository)'. (See inner exception for details.) (See inner exception for details.)
+ 
+
+ 
+记录时间：2018-11-17 18:00:26,562 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：OnExceptionAn error occurred during the activation of a particular registration. See the inner exception for details. Registration: Activator = AStudentService (ReflectionActivator), Services = [Service.IService.AStudentIService], Lifetime = Autofac.Core.Lifetime.CurrentScopeLifetime, Sharing = None, Ownership = OwnedByLifetimeScope ---> An error occurred during the activation of a particular registration. See the inner exception for details. Registration: Activator = AStudentRepository (ReflectionActivator), Services = [Repository.IReposotiry.IAStudentRepository], Lifetime = Autofac.Core.Lifetime.CurrentScopeLifetime, Sharing = None, Ownership = OwnedByLifetimeScope ---> None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'Repository.Reposotiry.AStudentRepository' can be invoked with the available services and parameters:
+Cannot resolve parameter 'Repository.Reposotiry.AStudentPayesRepository aStudentPayesRepository' of constructor 'Void .ctor(Microsoft.Extensions.Configuration.IConfiguration, Repository.Reposotiry.AStudentPayesRepository)'. (See inner exception for details.) (See inner exception for details.)
+ 
+
+ 
+记录时间：2018-11-17 18:00:38,289 
+线程ID:[11] 
+日志级别：  ERROR 
+错误描述：OnExceptionAn error occurred during the activation of a particular registration. See the inner exception for details. Registration: Activator = AStudentService (ReflectionActivator), Services = [Service.IService.AStudentIService], Lifetime = Autofac.Core.Lifetime.CurrentScopeLifetime, Sharing = None, Ownership = OwnedByLifetimeScope ---> An error occurred during the activation of a particular registration. See the inner exception for details. Registration: Activator = AStudentRepository (ReflectionActivator), Services = [Repository.IReposotiry.IAStudentRepository], Lifetime = Autofac.Core.Lifetime.CurrentScopeLifetime, Sharing = None, Ownership = OwnedByLifetimeScope ---> None of the constructors found with 'Autofac.Core.Activators.Reflection.DefaultConstructorFinder' on type 'Repository.Reposotiry.AStudentRepository' can be invoked with the available services and parameters:
+Cannot resolve parameter 'Repository.Reposotiry.AStudentPayesRepository aStudentPayesRepository' of constructor 'Void .ctor(Microsoft.Extensions.Configuration.IConfiguration, Repository.Reposotiry.AStudentPayesRepository)'. (See inner exception for details.) (See inner exception for details.)
+ 
+
+ 
+记录时间：2018-11-17 21:18:51,677 
+线程ID:[10] 
+日志级别：  ERROR 
+错误描述：OnException'form' 附近有语法错误。
+ 
+
+ 
+记录时间：2018-11-17 23:42:09,951 
+线程ID:[20] 
+日志级别：  ERROR 
+错误描述：OnExceptionInput string was not in a correct format.
+ 
+
+ 
+记录时间：2018-11-17 23:47:05,926 
+线程ID:[17] 
+日志级别：  ERROR 
+错误描述：OnExceptionInput string was not in a correct format.
+ 
+
+ 
+记录时间：2018-11-17 23:48:58,738 
+线程ID:[15] 
+日志级别：  ERROR 
+错误描述：OnExceptionInput string was not in a correct format.
+ 
+
+ 
+记录时间：2018-11-17 23:51:07,611 
+线程ID:[11] 
+日志级别：  ERROR 
+错误描述：IstrueBeginExecuteNonQuery: CommandText property has not been initialized
+ 
+
+ 
+记录时间：2018-11-17 23:51:22,563 
+线程ID:[14] 
+日志级别：  ERROR 
+错误描述：IstrueBeginExecuteNonQuery: CommandText property has not been initialized
+ 
+
+ 
+记录时间：2018-11-17 23:56:27,084 
+线程ID:[15] 
+日志级别：  ERROR 
+错误描述：IstrueBeginExecuteNonQuery: CommandText property has not been initialized
+ 
